@@ -1,0 +1,85 @@
+/* || RESET DEFAULT STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* || GLOBAL VARIABLES */
+:root {
+    --LIGHT-RGB: 202 198 176;
+    --DARK-RGB: 72 70 62;
+}
+
+/* ELEMENT RULES */
+body {
+    min-height: 100dvh;
+    background-color: rgb(var(--LIGHT-RGB));
+    display: flex;
+    flex-direction: column;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    /* quadratic light falloff */
+    --SCALAR: 1.2;
+    background-image: radial-gradient(circle at center,
+            transparent calc(10vh * var(--SCALAR)),
+            rgba(0, 0, 0, 0.0062) calc(20vh * var(--SCALAR)),
+            rgba(0, 0, 0, 0.0555) calc(40vh * var(--SCALAR)),
+            rgba(0, 0, 0, 0.1543) calc(60vh * var(--SCALAR)),
+            rgba(0, 0, 0, 0.3022) calc(80vh * var(--SCALAR)),
+            rgba(0, 0, 0, 0.5) calc(100vh * var(--SCALAR)));
+    z-index: 9999;
+    pointer-events: none;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    /* grid */
+    background-image: linear-gradient(to bottom, transparent, transparent 5px, rgba(0, 0, 0, 5%) 6px),
+        linear-gradient(to right, transparent, transparent 5px, rgba(0, 0, 0, 5%) 6px);
+    background-size: 6px 6px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+main {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+footer {
+    margin-bottom: 3rem;
+}
+
+div.decorative-rule-line {
+    border-top: 2px solid black;
+}
+
+div.decorative-rule-dots {
+    --PATTERN-WIDTH: 60px;
+
+    margin: 0rem 3rem;
+    height: 18px;
+
+    background-size: var(--PATTERN-WIDTH) 3px,
+        var(--PATTERN-WIDTH) 6px, var(--PATTERN-WIDTH) 6px, var(--PATTERN-WIDTH) 6px;
+    background-position: 50% 0px,
+        calc(50% - 7px) 4px, calc(50% + 7px) 4px, 50% 12px;
+    background-image: linear-gradient(90deg,
+            rgb(var(--DARK-RGB)) 0px, rgb(var(--DARK-RGB)) 4px,
+            transparent 4px, transparent calc(var(--PATTERN-WIDTH) - 4px),
+            rgb(var(--DARK-RGB)) calc(var(--PATTERN-WIDTH) - 4px)),
+        radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px),
+        radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px),
+        radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px);
+    background-repeat: repeat-x;
+}
