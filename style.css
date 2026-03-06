@@ -34,16 +34,30 @@ body::after {
     position: fixed;
     inset: 0;
 
-    /* quadratic light falloff */
-    --SCALAR: 1.2;
-    background-image: radial-gradient(circle at center,
-            transparent calc(10vh * var(--SCALAR)),
-            rgba(0, 0, 0, 0.0062) calc(20vh * var(--SCALAR)),
-            rgba(0, 0, 0, 0.0555) calc(40vh * var(--SCALAR)),
-            rgba(0, 0, 0, 0.1543) calc(60vh * var(--SCALAR)),
-            rgba(0, 0, 0, 0.3022) calc(80vh * var(--SCALAR)),
-            rgba(0, 0, 0, 0.5) calc(100vh * var(--SCALAR)));
-    z-index: 9999;
+    background-image:
+        /* six diagonal lines */
+        linear-gradient(45deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        linear-gradient(45deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        linear-gradient(45deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        linear-gradient(225deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        linear-gradient(225deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        linear-gradient(225deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        /* 4 corner circles */
+        radial-gradient(circle at top left, transparent 508px, rgba(0, 0, 0, 10%) 508px, rgba(0, 0, 0, 10%) 510px, transparent 510px,
+            transparent 528px, rgba(0, 0, 0, 10%) 528px, rgba(0, 0, 0, 10%) 530px, transparent 530px),
+        radial-gradient(circle at bottom right, transparent 508px, rgba(0, 0, 0, 10%) 508px, rgba(0, 0, 0, 10%) 510px, transparent 510px,
+            transparent 528px, rgba(0, 0, 0, 10%) 528px, rgba(0, 0, 0, 10%) 530px, transparent 530px);
+    background-size:
+        /* six diagonal lines */
+        810px 810px, 810px 810px, 810px 810px, 810px 810px, 810px 810px, 810px 810px,
+        /* 2 corner circles */
+        530px 530px, 530px 530px;
+    background-position:
+        /* six diagonal lines */
+        top left, top -30px left -90px, top -90px left -30px, bottom right, bottom -30px right -90px, bottom -90px right -30px,
+        /* 2 corner circles */
+        top left, bottom right;
+    background-repeat: no-repeat;
     pointer-events: none;
 }
 
@@ -52,10 +66,20 @@ body::before {
     position: fixed;
     inset: 0;
 
-    /* grid */
-    background-image: linear-gradient(to bottom, transparent, transparent 5px, rgba(0, 0, 0, 5%) 6px),
-        linear-gradient(to right, transparent, transparent 5px, rgba(0, 0, 0, 5%) 6px);
-    background-size: 6px 6px;
+    --SCALAR: 0.8;
+    background-image:
+        /* quadratic spotlight effect */
+        radial-gradient(circle at center,
+            transparent calc(10vw * var(--SCALAR)),
+            rgba(0, 0, 0, .0062) calc(20vw * var(--SCALAR)),
+            rgba(0, 0, 0, .0555) calc(40vw * var(--SCALAR)),
+            rgba(0, 0, 0, .1543) calc(60vw * var(--SCALAR)),
+            rgba(0, 0, 0, .3022) calc(80vw * var(--SCALAR)),
+            rgba(0, 0, 0, .5) calc(100vw * var(--SCALAR))),
+        /* grid overlay effect */
+        linear-gradient(to bottom, transparent 4px, rgba(0, 0, 0, 5%) 6px),
+        linear-gradient(to right, transparent 4px, rgba(0, 0, 0, 5%) 6px);
+    background-size: auto auto, 6px 6px, 6px 6px;
     z-index: 9999;
     pointer-events: none;
 }
