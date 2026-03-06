@@ -11,6 +11,8 @@
 :root {
     --LIGHT-RGB: 202 198 176;
     --DARK-RGB: 72 70 62;
+    /* required for .current-page box-shadow */
+    --NAV-MARGIN-BOTTOM: 1rem;
 }
 
 /* ELEMENT RULES */
@@ -82,12 +84,127 @@ div.decorative-rule-dots {
         var(--PATTERN-WIDTH) 6px, var(--PATTERN-WIDTH) 6px, var(--PATTERN-WIDTH) 6px;
     background-position: 50% 0px,
         calc(50% - 7px) 4px, calc(50% + 7px) 4px, 50% 12px;
-    background-image: linear-gradient(90deg,
-            rgb(var(--DARK-RGB)) 0px, rgb(var(--DARK-RGB)) 4px,
+    background-image: linear-gradient(90deg, rgb(var(--DARK-RGB)) 4px,
             transparent 4px, transparent calc(var(--PATTERN-WIDTH) - 4px),
             rgb(var(--DARK-RGB)) calc(var(--PATTERN-WIDTH) - 4px)),
         radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px),
         radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px),
         radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px);
     background-repeat: repeat-x;
+}
+
+.decorative-bar {
+    position: relative;
+}
+
+.decorative-bar::before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    height: 100%;
+    width: 21px;
+    background-image: linear-gradient(90deg, rgba(var(--DARK-RGB)/.25) 12px,
+            transparent 12px, transparent 18px,
+            rgba(var(--DARK-RGB)/.25) 18px);
+    z-index: -1;
+}
+
+nav {
+    margin-left: 6rem;
+    margin-right: 3rem;
+    margin-bottom: var(--NAV-MARGIN-BOTTOM);
+    margin-top: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1.75rem;
+}
+
+nav li {
+    /* 166px is min-width of 'project' link, css unable to get min-width of widest sibling */
+    flex: 1 0 166px;
+}
+
+nav a {
+    padding: 0.25em 0.25em;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-variation-settings: "wdth" 62.5;
+    white-space: nowrap;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+nav .current-page {
+    /* disable and highlight current page link */
+    pointer-events: none;
+    background-color: rgba(var(--DARK-RGB)/.8);
+    box-shadow: 0px var(--NAV-MARGIN-BOTTOM) rgba(var(--DARK-RGB)/.8);
+    color: rgb(var(--LIGHT-RGB));
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    /* animation: blink 1.5s ease-out 0s infinite normal forwards; */
+}
+
+nav .material-icons {
+    margin-right: 0.2em;
+    font-size: 1.25em;
+}
+
+.fx {
+    background-image: linear-gradient(90deg, rgb(var(--DARK-RGB)/.8) 50%,
+            rgba(var(--DARK-RGB)/.2) 50%);
+    background-size: 201% 100%;
+    background-position: right;
+    color: rgb(var(--DARK-RGB));
+
+    position: relative;
+    transition: color 0.2s ease-out, background-position 0.2s ease-out;
+}
+
+.fx:hover,
+.fx:focus {
+    color: rgb(var(--LIGHT-RGB));
+    background-position: left;
+    box-shadow: 2px 2px 2px rgb(var(--DARK-RGB)/0.5);
+}
+
+.fx::before {
+    /* draw selected line decoration */
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -5px;
+    bottom: -5px;
+    width: 100%;
+    background: linear-gradient(rgba(var(--DARK-RGB)/.8) 5%,
+            transparent 5%, transparent 95%,
+            rgba(var(--DARK-RGB)/.8) 95%);
+    opacity: 0%;
+}
+
+.fx:hover::before,
+.fx:focus::before {
+    /* reveal selected line decoration */
+    opacity: 100%;
+}
+
+@keyframes blink {
+
+    0%,
+    50%,
+    100% {
+        opacity: 100%;
+    }
+
+    25% {
+        opacity: 50%;
+    }
 }
