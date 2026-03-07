@@ -143,6 +143,7 @@ nav {
 
 nav ul {
     list-style: none;
+    text-transform: uppercase;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -154,11 +155,10 @@ nav li {
     flex: 1 0 166px;
 }
 
-nav a {
+.clickable {
     padding: 0.25em 0.25em;
     width: 100%;
     text-decoration: none;
-    text-transform: uppercase;
     letter-spacing: 2px;
     font-variation-settings: "wdth" 62.5;
     white-space: nowrap;
@@ -177,7 +177,7 @@ nav .current-page {
     /* animation: blink 1.5s ease-out 0s infinite normal forwards; */
 }
 
-nav .material-icons {
+.clickable .material-icons {
     margin-right: 0.2em;
     font-size: 1.25em;
 }
@@ -201,6 +201,20 @@ nav .material-icons {
 }
 
 .fx::before {
+    /* draw selected pointer decoration */
+    content: "";
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    background-color: rgba(var(--DARK-RGB)/.8);
+    clip-path: polygon(25% 25%, 100% 47%, 25% 75%, 0 50%);
+    left: -1.5rem;
+
+    opacity: 0%;
+}
+
+.fx::after {
     /* draw selected line decoration */
     content: "";
     position: absolute;
@@ -215,7 +229,9 @@ nav .material-icons {
 }
 
 .fx:hover::before,
-.fx:focus::before {
+.fx:focus::before,
+.fx:hover::after,
+.fx:focus::after {
     /* reveal selected line decoration */
     opacity: 100%;
 }
