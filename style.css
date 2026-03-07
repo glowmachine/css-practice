@@ -236,6 +236,84 @@ nav .current-page {
     opacity: 100%;
 }
 
+hgroup {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    letter-spacing: 0.05em;
+    margin-left: 3rem;
+}
+
+hgroup h1 {
+    text-transform: uppercase;
+    font-weight: 350;
+    text-shadow: .3rem .3rem 0 rgb(var(--DARK-RGB)/0.3);
+}
+
+hgroup p {
+    text-transform: capitalize;
+    font-weight: 400;
+    position: relative;
+    left: -0.8rem;
+}
+
+hgroup p::before {
+    content: "- ";
+    position: relative;
+    left: .2em;
+}
+
+.contact-form {
+    margin: 0 auto 0 auto;
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-form .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.contact-form .form-button-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.75rem;
+    margin-top: 1rem;
+}
+
+.contact-form .decorative-bar {
+    margin-left: 3rem;
+}
+
+form input,
+form textarea,
+form button {
+    display: block;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    padding: 0.25rem;
+    color: hsl(var(--DAR-HSL));
+    background-color: rgb(var(--DARK-RGB)/.35);
+    border: none;
+}
+
+input:hover,
+textarea:hover,
+select:hover,
+input:focus,
+textarea:focus,
+select:focus {
+    color: rgb(var(--LIGHT-RGB));
+    background-color: rgb(var(--DARK-RGB)/100%);
+    box-shadow: 2px 2px 2px rgb(var(--DARK-RGB)/0.5);
+}
+
 @keyframes blink {
 
     0%,

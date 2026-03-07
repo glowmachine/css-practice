@@ -33,14 +33,24 @@
             <h1>Contact</h1>
             <p>Form</p>
         </hgroup>
-        <section>
-            <article>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dignissimos, laboriosam aperiam enim adipisci quibusdam magni! Animi illo quibusdam voluptas quis facere? Ipsa accusantium temporibus minus fuga necessitatibus sed reprehenderit!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minus aliquid odio sit delectus animi voluptatum labore facilis quis earum facere incidunt iusto nobis dolorem sint, excepturi veritatis assumenda. Voluptatem necessitatibus officiis quia quas perspiciatis nulla sequi quis. Quaerat repudiandae harum dolor consequatur adipisci laborum earum distinctio, nisi soluta inventore maxime voluptatum placeat eligendi quod optio cum vitae illum eaque?</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi quis quia sit maiores eveniet cupiditate illo vero necessitatibus similique. Fugiat iusto voluptatem quo labore vel quidem, placeat sed possimus, reprehenderit est esse aperiam, ipsum aspernatur? Debitis, dolore! Odit consequatur minima laboriosam consectetur? Perferendis officiis sequi suscipit velit soluta cum totam nam. Modi, eveniet? Rem facere eveniet, nemo dolorem mollitia natus iusto exercitationem officia iste eaque blanditiis? Quisquam nobis numquam dolorum quae sequi aut quibusdam dolorem et non alias, molestiae officia adipisci. Vero beatae aspernatur repellendus omnis enim expedita, necessitatibus molestias facere exercitationem error eius, quisquam eum nihil unde vel sit repudiandae! Accusantium, facilis. Maiores tenetur, assumenda expedita, labore amet deleniti fugit itaque tempora, adipisci sapiente explicabo corporis necessitatibus qui eum.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, dicta cupiditate possimus animi numquam, impedit itaque ipsa illo non quasi eum fuga, adipisci amet perspiciatis vitae? Eum consequatur accusantium sunt ipsum similique ut error porro vel sit reiciendis a omnis voluptatem rerum, rem, quae quibusdam asperiores incidunt? Delectus saepe recusandae qui assumenda officiis unde odit inventore nostrum? Natus quae nemo magnam quo veniam fugit quas error delectus ea porro omnis voluptate, eius ex recusandae ut cupiditate atque enim ipsum ullam libero corporis pariatur fugiat hic deleniti. Quam odio recusandae officiis?</p>
-            </article>
-        </section>
+        <form action="https://httpbin.org/post" method="post" class="contact-form">
+            <div class="form-row"><label for="email">Email:</label>
+                <div class="decorative-bar"><input type="text" id="email" name="email" placeholder="jane.doe@proton.me" required></div>
+            </div>
+            <div class="form-row"><label for="subject">Subject:</label>
+                <div class="decorative-bar"><input type="text" id="subject" name="subject" placeholder="hello world" required></div>
+            </div>
+            <div class="form-row"><label for="message">Message:</label>
+                <div class="decorative-bar"><textarea id="message" name="message" rows="5" col="15" placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolore natus ex, minima vitae quasi perferendis illum quod nihil ut possimus ducimus veritatis? Odit excepturi assumenda rem aliquid, similique repellendus?" required></textarea></div>
+            </div>
+            <div class="form-button-row">
+                <div class="decorative-bar">
+                    <button type="submit" class="fx clickable"><i class="material-icons">square</i> Send</button>
+                </div>
+                <button type="reset" class="fx clickable"><i class="material-icons">square</i> Clear</button>
+
+            </div>
+        </form>
     </main>
     <footer>
         <div class="decorative-rule-line">
