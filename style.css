@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+html {
+    height: 100%;
+}
+
 /* || GLOBAL VARIABLES */
 :root {
     --LIGHT-RGB: 202 198 176;
@@ -17,7 +21,7 @@
 
 /* ELEMENT RULES */
 body {
-    min-height: 100dvh;
+    height: 100%;
     background-color: rgb(var(--LIGHT-RGB));
     display: flex;
     flex-direction: column;
@@ -26,7 +30,6 @@ body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: 300;
-
 }
 
 body::after {
@@ -85,9 +88,10 @@ body::before {
 }
 
 main {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    flex: 1;
+    height: 100%;
+    margin: 1rem 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
@@ -241,7 +245,7 @@ hgroup {
     align-items: baseline;
     gap: 1rem;
     letter-spacing: 0.05em;
-    margin-left: 3rem;
+    margin-bottom: 1rem;
 }
 
 hgroup h1 {
