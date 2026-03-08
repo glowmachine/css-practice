@@ -318,6 +318,96 @@ select:focus {
     box-shadow: 2px 2px 2px rgb(var(--DARK-RGB)/0.5);
 }
 
+.tictactoe {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 2rem;
+}
+
+.tictactoe .controls {
+    grid-column: 1;
+    align-self: center;
+}
+
+.tictactoe .game {
+    grid-column: 2;
+    place-self: center;
+}
+
+.tictactoe .board {
+    display: grid;
+    height: 100%;
+    aspect-ratio: 1/1;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+.tictactoe .board::after {
+    content: "";
+    inset: 0;
+    position: absolute;
+    /* board lines */
+    background-image: linear-gradient(transparent 32.5%,
+            rgb(var(--DARK-RGB)) 32.5%, rgb(var(--DARK-RGB)) 33%,
+            transparent 33%, transparent 67%,
+            rgb(var(--DARK-RGB)) 67%, rgb(var(--DARK-RGB)) 67.5%,
+            transparent 67.5%),
+        linear-gradient(90deg, transparent 32.5%,
+            rgb(var(--DARK-RGB)) 32.5%, rgb(var(--DARK-RGB)) 33%,
+            transparent 33%, transparent 67%,
+            rgb(var(--DARK-RGB)) 67%, rgb(var(--DARK-RGB)) 67.5%,
+            transparent 67.5%);
+    z-index: -1;
+}
+
+.tictactoe .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.tictactoe input {
+    display: none;
+}
+
+.tictactoe label {
+    /* shape for game markers when none are checked */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+
+    border: 2px solid rgb(var(--DARK-RGB)/.25);
+    border-radius: 50%;
+    background-image: radial-gradient(rgb(var(--DARK-RGB)) .75rem, transparent 70%);
+    height: 2rem;
+    width: 2rem;
+    color: rgb(var(--LIGHT-RGB));
+    cursor: crosshair;
+    transition:
+        width .5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        height 1s cubic-bezier(1, 0, 0, .75);
+}
+
+.tictactoe input:checked+label {
+    /* shape for game markers when one is checked */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-color: transparent;
+    background-color: rgb(var(--LIGHT-RGB));
+    font-size: 3rem;
+    font-weight: bolder;
+    color: transparent;
+    animation: tictactoe-blink 2s 1s infinite;
+}
+
 @keyframes blink {
 
     0%,
@@ -328,5 +418,19 @@ select:focus {
 
     25% {
         opacity: 50%;
+    }
+}
+
+@keyframes tictactoe-blink {
+    0% {
+        color: rgb(var(--DARK-RGB));
+        border-color: red;
+        background-image: radial-gradient(transparent 25%, rgb(var(--DARK-RGB)));
+    }
+
+    100% {
+        color: rgb(var(--DARK-RGB));
+        /* border-color: rgb(var(--DARK-RGB)); */
+        background-image: radial-gradient(transparent 25%, rgb(var(--DARK-RGB)));
     }
 }
