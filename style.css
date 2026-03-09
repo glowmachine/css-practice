@@ -156,7 +156,8 @@ nav ul {
 
 nav li {
     /* 166px is min-width of 'project' link, css unable to get min-width of widest sibling */
-    flex: 1 0 166px;
+    flex: 1 0 0px;
+    background-color: rgb(var(--DARK-RGB)/.2);
 }
 
 .clickable {
@@ -188,7 +189,7 @@ nav .current-page {
 
 .fx {
     background-image: linear-gradient(90deg, rgb(var(--DARK-RGB)/.8) 50%,
-            rgba(var(--DARK-RGB)/.2) 50%);
+            transparent 50%);
     background-size: 201% 100%;
     background-position: right;
     color: rgb(var(--DARK-RGB));
@@ -201,6 +202,10 @@ nav .current-page {
 .fx:focus {
     color: rgb(var(--LIGHT-RGB));
     background-position: left;
+}
+
+nav .fx:hover,
+nav .fx:hover {
     box-shadow: 2px 2px 2px rgb(var(--DARK-RGB)/0.5);
 }
 
@@ -208,6 +213,7 @@ nav .current-page {
     /* draw selected pointer decoration */
     content: "";
     position: absolute;
+    pointer-events: none;
     width: 1.5rem;
     height: 1.5rem;
 
