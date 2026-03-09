@@ -31,16 +31,121 @@
     <main>
         <hgroup>
             <h1>Git</h1>
-            <p>Cheatsheet</p>
+            <p>Quickstart Guide</p>
         </hgroup>
-        <section>
-            <article>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dignissimos, laboriosam aperiam enim adipisci quibusdam magni! Animi illo quibusdam voluptas quis facere? Ipsa accusantium temporibus minus fuga necessitatibus sed reprehenderit!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minus aliquid odio sit delectus animi voluptatum labore facilis quis earum facere incidunt iusto nobis dolorem sint, excepturi veritatis assumenda. Voluptatem necessitatibus officiis quia quas perspiciatis nulla sequi quis. Quaerat repudiandae harum dolor consequatur adipisci laborum earum distinctio, nisi soluta inventore maxime voluptatum placeat eligendi quod optio cum vitae illum eaque?</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi quis quia sit maiores eveniet cupiditate illo vero necessitatibus similique. Fugiat iusto voluptatem quo labore vel quidem, placeat sed possimus, reprehenderit est esse aperiam, ipsum aspernatur? Debitis, dolore! Odit consequatur minima laboriosam consectetur? Perferendis officiis sequi suscipit velit soluta cum totam nam. Modi, eveniet? Rem facere eveniet, nemo dolorem mollitia natus iusto exercitationem officia iste eaque blanditiis? Quisquam nobis numquam dolorum quae sequi aut quibusdam dolorem et non alias, molestiae officia adipisci. Vero beatae aspernatur repellendus omnis enim expedita, necessitatibus molestias facere exercitationem error eius, quisquam eum nihil unde vel sit repudiandae! Accusantium, facilis. Maiores tenetur, assumenda expedita, labore amet deleniti fugit itaque tempora, adipisci sapiente explicabo corporis necessitatibus qui eum.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, dicta cupiditate possimus animi numquam, impedit itaque ipsa illo non quasi eum fuga, adipisci amet perspiciatis vitae? Eum consequatur accusantium sunt ipsum similique ut error porro vel sit reiciendis a omnis voluptatem rerum, rem, quae quibusdam asperiores incidunt? Delectus saepe recusandae qui assumenda officiis unde odit inventore nostrum? Natus quae nemo magnam quo veniam fugit quas error delectus ea porro omnis voluptate, eius ex recusandae ut cupiditate atque enim ipsum ullam libero corporis pariatur fugiat hic deleniti. Quam odio recusandae officiis?</p>
-            </article>
-        </section>
+        <div class="two-column-layout">
+            <section class="two-column-left content-frame decorative-bar">
+                <ul class="fragment-list">
+                    <li><a href="#intro" class="fx clickable"><i class="material-icons">search</i> Introduction</a></li>
+                    <li><a href="#network" class="fx clickable"><i class="material-icons">search</i> Network Setup</a></li>
+                    <li><a href="#config" class="fx clickable"><i class="material-icons">search</i> Git Config</a></li>
+                    <li><a href="#variables" class="fx clickable"><i class="material-icons">search</i> Variables</a></li>
+                    <li><a href="#navigation" class="fx clickable"><i class="material-icons">search</i> Branch Navigation</a></li>
+                    <li><a href="#workflow" class="fx clickable"><i class="material-icons">search</i> Workflow</a></li>
+                    <li><a href="#advworkflow" class="fx clickable"><i class="material-icons">search</i> Advanced Workflow</a></li>
+                    <li><a href="#stash" class="fx clickable"><i class="material-icons">search</i> Stashes</a></li>
+                    <li><a href="#history" class="fx clickable"><i class="material-icons">search</i> Viewing History</a></li>
+                    <li><a href="#commits" class="fx clickable"><i class="material-icons">search</i> Commit Messages</a></li>
+                    <li><a href="#resources" class="fx clickable"><i class="material-icons">search</i> Additional Resources</a></li>
+                </ul>
+            </section>
+            <section class="two-column-right">
+                <h2><i class="material-icons">square</i> Information</h2>
+                <div class="content-frame">
+                    <div class="content">
+                        <article>
+                            <h3 id="intro">Introduction</h3>
+                            <dl>
+                                <dt>What is a project?</dt>
+                                <dd>The thing we're working on, the files and subfolders related to it held in a single directory.</dd>
+                                <dt>What is Git?</dt>
+                                <dd>A version control system (VCS) that records a project's history, including copies of changes each step of the way that allow us to revert, combine, and collaborate with others.</dd>
+                                <dt>What is a .git repository?</dt>
+                                <dd>A hidden subfolder in a project's folder containing all the files that make Git go, like the recovery folder of a project's files and how they're linked together. These are aka the "local respositories."</dd>
+                                <dt>What's a branch?</dt>
+                                <dd>A version of a project.</dd>
+                                <dt>What's a commit?</dt>
+                                <dd>A version of a branch, like a save point in the project.</dd>
+                                <dt>What are the 4 different states of a file?</dt>
+                                <dd>
+                                    <ul>
+                                        <li>Committed - These files are part of the current commit ("save point") of the current branch ("project version").</li>
+                                        <li>Staged - These files are ready to be added to the next commit of the current branch.</li>
+                                        <li>Edited - These files have been saved with edits on the computer but need to be restaged for the edits to be included in the next commit.</li>
+                                        <li>Untracked - These files are ignored and will be removed from the next commits.</li>
+                                    </ul>
+                                </dd>
+                                <dt>What is the working directory?</dt>
+                                <dd>The project folder, who content change based on the commit we're looking at.</dd>
+                                <dt>What is branching?</dt>
+                                <dd>Making a copy of a branch from its very beginning, all the way up to a specific commit (the "base"). This way, we can work on a feature without touching the main branch.</dd>
+                                <dt>What is merging?</dt>
+                                <dd>Taking changes from another branch and combining them into the branch we're currently on. This way, we can update a branch only when something on the other branch is ready.</dd>
+                                <dt>What is rebasing?</dt>
+                                <dd>Changing the commit that we originally branched from to another one. This way, we can update our branch with changes on the other branch without twisting merges.</dd>
+                                <dt>What is Github?</dt>
+                                <dd>A cloud service for remote repositories, where we can backup our local repositories. Services like this (Github, GitLab, Bitbucket, etc.) also allow us to backup our work and collaborate with others on the same projects at the same time.</dd>
+                                <dt>What is fetching?</dt>
+                                <dd>Downloading a remote branch to update the branch, but don't update any files by merging any changes. This allows us to see if there are any changes first without affecting our files, so we can decide which and if we want to merge later.</dd>
+                                <dt>What is pulling?</dt>
+                                <dd>Fetching, but merge all changes. If there are conflicts between local's edits and remote's changes, immediately start the process of resolving them one by one.</dd>
+                                <dt>What is pushing?</dt>
+                                <dd>Uploading from local to remote and update remote.</dd>
+                                <dt>What is a pull request?</dt>
+                                <dd>A request to pull changes into a branch on the remote repository, or "please pull my changes into your branch." They're similar to how we implicitly allow pulls from remote branches into our local branches.</dd>
+                                <dt>What is a fork?</dt>
+                                <dd>A remote repository that's a replica of a different remote repository. Different owners but same structure, they allow merging between forks (i.e., pulls and pull requests).</dd>
+                            </dl>
+                        </article>
+                        <hr>
+                        <article>
+                            <h3 id="network">Network Setup</h3>
+                            <dl>
+                                <dt><code>ssh-keygen -t ed25519</code></dt>
+                                <dd>Generate an SSH key pair of type ed25519. This asymmetric encryption allows you to securely communicate with GitHub.</dd>
+                                <dt><code>cat ~/.ssh/id_ed25519.pub</code></dt>
+                                <dd>Print the public key <code>id_ed25519.pub</code>, if it exists.</dd>
+                                <dt><code>ls ~/.ssh/id_ed25519</code></dt>
+                                <dd>List the private key <code>id_ed25519</code>, if it exists. You don't need to know what it is, just that it should be there. Anyone who gets a hold of this has full access to anything that trust it via the public key, so keep it secret.</dd>
+                            </dl>
+                        </article>
+                        <hr>
+                        <article>
+                            <h3 id="config">Git Config</h3>
+                            <dl>
+                                <dt><code>git init</code></dt>
+                                <dd>initalize a local git repository in the current directory</dd>
+                                <dt><code>~/.gitconfig</code></dt>
+                                <dd>user-level file storing the git config settings below:</dd>
+                                <dt><code>git config --global user.name <em>name</em></code></dt>
+                                <dd>set the default name for the user on commits to <code><em>name</em></code></dd>
+                                <dt><code>git config --global user.email <em>email</em></code></dt>
+                                <dd>set the default email for the user on commits to <code><em>email</em></code></dd>
+                                <dt><code>git config --global init.defaultBranch <em>main</em></code></dt>
+                                <dd>set the default name of new git projects to <code><em>main</em></code></dd>
+                                <dt><code>~/.gitignore_global</code></dt>
+                                <dd>file used to store the names of files to exclude from the repository
+                                    <ul>
+                                        <li>(MacOS) <code>echo <em>.DS_Store</em> >> ~/.gitignore_global</code> will write <code><em>.DS_Store</em></code> to the file</li>
+                                        <li>(Windows) <code>echo <em>Thumbs.db</em> >> ~/.gitignore_global</code> will write <code><em>Thumbs.db</em></code> to the file</li>
+                                    </ul>
+                                </dd>
+                                <dt><code>git config --global core.excludesfile <em>~/.gitignore_global</em></code></dt>
+                                <dd>exclude <code><em>~/.gitignore_global</em></code> and files listed within it from being tracked</dd>
+                                <dt><code>git config --global core.editor "<em>code --wait</em>"</code></dt>
+                                <dd>set the default text editor to VS Code</dd>
+                                <dt><code>git remote add <em>alias</em> <em>remoteurl</em></code></dt>
+                                <dd>start tracking <code><em>remoteurl</em></code> named <code><em>alias</em></code> as a remote repository for the local repo (<code>origin</code> is usually the name of the remote repo)</dd>
+                                <dt><code>git remote remove <em>alias</em></code></dt>
+                                <dd>stop tracking <code><em>alias</em></code> as a remote repo for the local repo</dd>
+                                <dt><code>git remote</code></dt>
+                                <dd>list the aliases of the remote repos tracked by the local repo (add <code>-v</code> for <code>--verbose</code> to list URLs with aliases)</dd>
+                            </dl>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
     <footer>
         <div class="decorative-rule-line">

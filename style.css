@@ -14,6 +14,7 @@ html {
 /* || GLOBAL VARIABLES */
 :root {
     --LIGHT-RGB: 202 198 176;
+    --LIGHTER-RGB: 222 220 206;
     --DARK-RGB: 72 70 62;
     /* required for .current-page box-shadow */
     --NAV-MARGIN-BOTTOM: 1rem;
@@ -88,14 +89,136 @@ body::before {
 }
 
 main {
-    height: 100%;
+    /* beware! this requires everything to be overflow controlled */
+    min-height: 0;
+    flex: 1;
     margin: 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    scrollbar-color: rgb(var(--DARK-RGB)) rgb(var(--DARK-RGB)/.25);
+}
+
+main .two-column-layout {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.content-frame {
+    min-height: 0;
+    position: relative;
+}
+
+.content-frame::after {
+    /* decorative top+bottom section line */
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 5px;
+    right: 2.2rem;
+    left: 5px;
+    bottom: 5px;
+    background-image: linear-gradient(rgb(var(--DARK-RGB)) 3px, transparent 3px, transparent calc(100% - 3px),
+            rgb(var(--DARK-RGB)) calc(100% - 3px));
+}
+
+.two-column-left {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 0;
+
+    margin-left: 3rem;
+    padding: 1rem 0;
+    background-color: rgb(var(--LIGHTER-RGB));
+    position: relative;
+
+    box-shadow: 3px 3px rgb(var(--DARK-RGB)/0.5);
+}
+
+.two-column-left .fragment-list {
+    overflow-y: scroll;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 1rem .5rem 1rem 0;
+}
+
+.two-column-right {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 0;
+
+    background-color: rgb(var(--LIGHTER-RGB));
+    position: relative;
+
     display: flex;
     flex-direction: column;
 }
 
+.two-column-right h2 {
+    background-color: rgb(var(--DARK-RGB)/.5);
+    font-size: 1.5rem;
+    font-weight: 350;
+    letter-spacing: 0.05em;
+    padding: 0.25em 0.25em;
+}
+
+.two-column-right .content {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: calc(100% - 2rem);
+
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    padding-right: .5rem;
+    word-spacing: .5ch;
+}
+
+.content hr {
+    border: none;
+    height: 3px;
+    background: rgb(var(--DARK-RGB));
+    width: calc(100% - .5rem);
+    margin: 1rem .25rem 1rem 0rem;
+}
+
+.content h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding-bottom: 1em;
+}
+
+.content dt {
+    word-spacing: normal;
+    padding-left: 1em;
+}
+
+.content dd {
+    margin-bottom: 1em;
+}
+
+.content ul {
+    list-style: inside;
+    list-style-type: square;
+}
+
+.content code {
+    font-family: monospace;
+    font-size: .8em;
+    white-space: nowrap;
+    padding: .1em .25em;
+    background-color: rgb(var(--DARK-RGB));
+    color: rgb(var(--LIGHT-RGB));
+}
+
 footer {
-    margin-bottom: 3rem;
+    /* padding will show that height stays within vh, margin will not */
+    padding-bottom: 3rem;
 }
 
 div.decorative-rule-line {
