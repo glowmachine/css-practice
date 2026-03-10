@@ -458,6 +458,7 @@ select:focus {
 .tictactoe .controls {
     grid-column: 1;
     align-self: center;
+    margin-left: 3rem;
 }
 
 .tictactoe .game {
