@@ -159,14 +159,6 @@ main .two-column-layout {
     flex-direction: column;
 }
 
-.two-column-right h2 {
-    background-color: rgb(var(--DARK-RGB)/.5);
-    font-size: 1.5rem;
-    font-weight: 350;
-    letter-spacing: 0.05em;
-    padding: 0.25em 0.25em;
-}
-
 .two-column-right .content {
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -177,6 +169,20 @@ main .two-column-layout {
     margin-left: 1rem;
     padding-right: .5rem;
     word-spacing: .5ch;
+}
+
+.content-title-bar {
+    font-size: 1.5rem;
+    background-color: rgb(var(--DARK-RGB)/.5);
+    display: flex;
+    align-items: center;
+    padding: 0.25em 0.25em;
+}
+
+.content-title-bar h2 {
+    font-size: 1.5rem;
+    font-weight: 350;
+    letter-spacing: 0.05em;
 }
 
 .content hr {
@@ -305,7 +311,8 @@ nav .current-page {
     /* animation: blink 1.5s ease-out 0s infinite normal forwards; */
 }
 
-.clickable .material-icons {
+.clickable .material-icons,
+.content-title-bar .material-icons {
     margin-right: 0.2em;
     font-size: 1.25em;
 }
