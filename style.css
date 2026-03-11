@@ -332,6 +332,7 @@ nav .current-page {
 
 .fx:hover,
 .fx:focus {
+    outline: none;
     color: hsl(var(--LIGHT-HSL));
     background-position: left;
 }
@@ -448,9 +449,9 @@ select:hover,
 input:focus,
 textarea:focus,
 select:focus {
+    outline: none;
     color: hsl(var(--LIGHT-HSL));
-    background-color: hsl(var(--DARK-HSL));
-    box-shadow: 2px 2px 2px hsl(var(--DARK-HSL)/.5);
+    box-shadow: 0px 0px 2px 1px hsl(var(--DARK-HSL)/.5);
 }
 
 .tictactoe {
