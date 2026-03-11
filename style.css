@@ -337,8 +337,8 @@ nav .current-page {
     background-position: left;
 }
 
-nav .fx:hover,
-nav .fx:hover {
+nav a.fx:hover,
+button.fx:hover {
     box-shadow: 2px 2px 2px hsl(var(--DARK-HSL)/0.5);
 }
 
