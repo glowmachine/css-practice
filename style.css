@@ -13,9 +13,11 @@ html {
 
 /* || GLOBAL VARIABLES */
 :root {
-    --LIGHT-RGB: 202 198 176;
-    --LIGHTER-RGB: 222 220 206;
-    --DARK-RGB: 72 70 62;
+    --HUE: 47;
+    --LIGHT-HSL: var(--HUE) 22% 75%;
+    --DARK-HSL: var(--HUE) 11% 27%;
+    --ACCENT-HSL: var(--HUE) 13% 65%;
+    --CONTENT-HSL: var(--HUE) 31% 80%;
     /* required for .current-page box-shadow */
     --NAV-MARGIN-BOTTOM: 1rem;
 }
@@ -23,11 +25,11 @@ html {
 /* ELEMENT RULES */
 body {
     height: 100%;
-    background-color: rgb(var(--LIGHT-RGB));
+    background-color: hsl(var(--LIGHT-HSL));
     display: flex;
     flex-direction: column;
 
-    color: rgb(var(--DARK-RGB));
+    color: hsl(var(--DARK-HSL));
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: 300;
@@ -36,21 +38,22 @@ body {
 body::after {
     content: "";
     position: fixed;
+    z-index: -9999;
     inset: 0;
 
     background-image:
         /* six diagonal lines */
-        linear-gradient(45deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
-        linear-gradient(45deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
-        linear-gradient(45deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
-        linear-gradient(225deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
-        linear-gradient(225deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
-        linear-gradient(225deg, transparent 572px, rgba(0, 0, 0, 10%) 572px, rgba(0, 0, 0, 10%) 574px, transparent 574px),
+        linear-gradient(45deg, transparent 572px, hsl(var(--ACCENT-HSL)) 572px, hsl(var(--ACCENT-HSL)) 574px, transparent 574px),
+        linear-gradient(45deg, transparent 572px, hsl(var(--ACCENT-HSL)) 572px, hsl(var(--ACCENT-HSL)) 574px, transparent 574px),
+        linear-gradient(45deg, transparent 572px, hsl(var(--ACCENT-HSL)) 572px, hsl(var(--ACCENT-HSL)) 574px, transparent 574px),
+        linear-gradient(225deg, transparent 572px, hsl(var(--ACCENT-HSL)) 572px, hsl(var(--ACCENT-HSL)) 574px, transparent 574px),
+        linear-gradient(225deg, transparent 572px, hsl(var(--ACCENT-HSL)) 572px, hsl(var(--ACCENT-HSL)) 574px, transparent 574px),
+        linear-gradient(225deg, transparent 572px, hsl(var(--ACCENT-HSL)) 572px, hsl(var(--ACCENT-HSL)) 574px, transparent 574px),
         /* 4 corner circles */
-        radial-gradient(circle at top left, transparent 508px, rgba(0, 0, 0, 10%) 508px, rgba(0, 0, 0, 10%) 510px, transparent 510px,
-            transparent 528px, rgba(0, 0, 0, 10%) 528px, rgba(0, 0, 0, 10%) 530px, transparent 530px),
-        radial-gradient(circle at bottom right, transparent 508px, rgba(0, 0, 0, 10%) 508px, rgba(0, 0, 0, 10%) 510px, transparent 510px,
-            transparent 528px, rgba(0, 0, 0, 10%) 528px, rgba(0, 0, 0, 10%) 530px, transparent 530px);
+        radial-gradient(circle at top left, transparent 508px, hsl(var(--ACCENT-HSL)) 508px, hsl(var(--ACCENT-HSL)) 510px, transparent 510px,
+            transparent 528px, hsl(var(--ACCENT-HSL)) 528px, hsl(var(--ACCENT-HSL)) 530px, transparent 530px),
+        radial-gradient(circle at bottom right, transparent 508px, hsl(var(--ACCENT-HSL)) 508px, hsl(var(--ACCENT-HSL)) 510px, transparent 510px,
+            transparent 528px, hsl(var(--ACCENT-HSL)) 528px, hsl(var(--ACCENT-HSL)) 530px, transparent 530px);
     background-size:
         /* six diagonal lines */
         810px 810px, 810px 810px, 810px 810px, 810px 810px, 810px 810px, 810px 810px,
@@ -95,7 +98,7 @@ main {
     margin: 1rem 3rem;
     display: flex;
     flex-direction: column;
-    scrollbar-color: rgb(var(--DARK-RGB)) rgb(var(--DARK-RGB)/.25);
+    scrollbar-color: hsl(var(--DARK-HSL)) hsl(var(--ACCENT-HSL));
 }
 
 main .two-column-layout {
@@ -119,8 +122,8 @@ main .two-column-layout {
     right: 2.2rem;
     left: 5px;
     bottom: 5px;
-    background-image: linear-gradient(rgb(var(--DARK-RGB)) 3px, transparent 3px, transparent calc(100% - 3px),
-            rgb(var(--DARK-RGB)) calc(100% - 3px));
+    background-image: linear-gradient(hsl(var(--DARK-HSL)) 3px, transparent 3px, transparent calc(100% - 3px),
+            hsl(var(--DARK-HSL)) calc(100% - 3px));
 }
 
 .two-column-left {
@@ -130,10 +133,10 @@ main .two-column-layout {
 
     margin-left: 3rem;
     padding: 1rem 0;
-    background-color: rgb(var(--LIGHTER-RGB));
+    background-color: hsl(var(--CONTENT-HSL));
     position: relative;
 
-    box-shadow: 3px 3px rgb(var(--DARK-RGB)/0.5);
+    box-shadow: 3px 3px hsl(var(--DARK-HSL)/0.5);
 }
 
 .two-column-left .fragment-list {
@@ -152,7 +155,7 @@ main .two-column-layout {
     grid-row: 1;
     min-height: 0;
 
-    background-color: rgb(var(--LIGHTER-RGB));
+    background-color: hsl(var(--CONTENT-HSL));
     position: relative;
 
     display: flex;
@@ -173,7 +176,7 @@ main .two-column-layout {
 
 .content-title-bar {
     font-size: 1.5rem;
-    background-color: rgb(var(--DARK-RGB)/.5);
+    background-color: hsl(var(--ACCENT-HSL));
     display: flex;
     align-items: center;
     padding: 0.25em 0.25em;
@@ -188,7 +191,7 @@ main .two-column-layout {
 .content hr {
     border: none;
     height: 3px;
-    background: rgb(var(--DARK-RGB));
+    background: hsl(var(--DARK-HSL));
     width: calc(100% - .5rem);
     margin: 1rem .25rem 1rem 0rem;
 }
@@ -218,8 +221,8 @@ main .two-column-layout {
     font-size: .8em;
     white-space: nowrap;
     padding: .1em .25em;
-    background-color: rgb(var(--DARK-RGB));
-    color: rgb(var(--LIGHT-RGB));
+    background-color: hsl(var(--DARK-HSL));
+    color: hsl(var(--LIGHT-HSL));
 }
 
 footer {
@@ -228,7 +231,7 @@ footer {
 }
 
 div.decorative-rule-line {
-    border-top: 2px solid black;
+    border-top: 2px solid hsl(var(--DARK-HSL));
 }
 
 div.decorative-rule-dots {
@@ -241,12 +244,12 @@ div.decorative-rule-dots {
         var(--PATTERN-WIDTH) 6px, var(--PATTERN-WIDTH) 6px, var(--PATTERN-WIDTH) 6px;
     background-position: 50% 0px,
         calc(50% - 7px) 4px, calc(50% + 7px) 4px, 50% 12px;
-    background-image: linear-gradient(90deg, rgb(var(--DARK-RGB)) 4px,
+    background-image: linear-gradient(90deg, hsl(var(--DARK-HSL)) 4px,
             transparent 4px, transparent calc(var(--PATTERN-WIDTH) - 4px),
-            rgb(var(--DARK-RGB)) calc(var(--PATTERN-WIDTH) - 4px)),
-        radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px),
-        radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px),
-        radial-gradient(circle, rgb(var(--DARK-RGB)), rgb(var(--DARK-RGB)) 2px, transparent 3px);
+            hsl(var(--DARK-HSL)) calc(var(--PATTERN-WIDTH) - 4px)),
+        radial-gradient(circle, hsl(var(--DARK-HSL)), hsl(var(--DARK-HSL)) 2px, transparent 3px),
+        radial-gradient(circle, hsl(var(--DARK-HSL)), hsl(var(--DARK-HSL)) 2px, transparent 3px),
+        radial-gradient(circle, hsl(var(--DARK-HSL)), hsl(var(--DARK-HSL)) 2px, transparent 3px);
     background-repeat: repeat-x;
 }
 
@@ -261,9 +264,9 @@ div.decorative-rule-dots {
     top: 0;
     height: 100%;
     width: 21px;
-    background-image: linear-gradient(90deg, rgba(var(--DARK-RGB)/.25) 12px,
+    background-image: linear-gradient(90deg, hsl(var(--ACCENT-HSL)) 12px,
             transparent 12px, transparent 18px,
-            rgba(var(--DARK-RGB)/.25) 18px);
+            hsl(var(--ACCENT-HSL)) 18px);
     z-index: -1;
 }
 
@@ -286,7 +289,7 @@ nav ul {
 nav li {
     /* 166px is min-width of 'project' link, css unable to get min-width of widest sibling */
     flex: 1 0 0px;
-    background-color: rgb(var(--DARK-RGB)/.2);
+    background-color: hsl(var(--ACCENT-HSL));
 }
 
 .clickable {
@@ -304,9 +307,9 @@ nav li {
 nav .current-page {
     /* disable and highlight current page link */
     pointer-events: none;
-    background-color: rgba(var(--DARK-RGB)/.8);
-    box-shadow: 0px var(--NAV-MARGIN-BOTTOM) rgba(var(--DARK-RGB)/.8);
-    color: rgb(var(--LIGHT-RGB));
+    background-color: hsl(var(--DARK-HSL));
+    box-shadow: 0px var(--NAV-MARGIN-BOTTOM) hsl(var(--DARK-HSL));
+    color: hsl(var(--LIGHT-HSL));
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     /* animation: blink 1.5s ease-out 0s infinite normal forwards; */
 }
@@ -318,11 +321,11 @@ nav .current-page {
 }
 
 .fx {
-    background-image: linear-gradient(90deg, rgb(var(--DARK-RGB)/.8) 50%,
+    background-image: linear-gradient(90deg, hsl(var(--DARK-HSL)) 50%,
             transparent 50%);
     background-size: 201% 100%;
     background-position: right;
-    color: rgb(var(--DARK-RGB));
+    color: hsl(var(--DARK-HSL));
 
     position: relative;
     transition: color 0.2s ease-out, background-position 0.2s ease-out;
@@ -330,13 +333,13 @@ nav .current-page {
 
 .fx:hover,
 .fx:focus {
-    color: rgb(var(--LIGHT-RGB));
+    color: hsl(var(--LIGHT-HSL));
     background-position: left;
 }
 
 nav .fx:hover,
 nav .fx:hover {
-    box-shadow: 2px 2px 2px rgb(var(--DARK-RGB)/0.5);
+    box-shadow: 2px 2px 2px hsl(var(--DARK-HSL)/0.5);
 }
 
 .fx::before {
@@ -347,7 +350,7 @@ nav .fx:hover {
     width: 1.5rem;
     height: 1.5rem;
 
-    background-color: rgba(var(--DARK-RGB)/.8);
+    background-color: hsl(var(--DARK-HSL));
     clip-path: polygon(25% 25%, 100% 47%, 25% 75%, 0 50%);
     left: -1.5rem;
 
@@ -362,9 +365,9 @@ nav .fx:hover {
     top: -5px;
     bottom: -5px;
     width: 100%;
-    background: linear-gradient(rgba(var(--DARK-RGB)/.8) 5%,
+    background-image: linear-gradient(hsl(var(--DARK-HSL)) 5%,
             transparent 5%, transparent 95%,
-            rgba(var(--DARK-RGB)/.8) 95%);
+            hsl(var(--DARK-HSL)) 95%);
     opacity: 0%;
 }
 
@@ -387,7 +390,7 @@ hgroup {
 hgroup h1 {
     text-transform: uppercase;
     font-weight: 350;
-    text-shadow: .3rem .3rem 0 rgb(var(--DARK-RGB)/0.3);
+    text-shadow: .3rem .3rem 0 hsl(var(--ACCENT-HSL));
 }
 
 hgroup p {
@@ -439,7 +442,7 @@ form button {
     font-weight: inherit;
     padding: 0.25rem;
     color: hsl(var(--DAR-HSL));
-    background-color: rgb(var(--DARK-RGB)/.35);
+    background-color: hsl(var(--ACCENT-HSL));
     border: none;
 }
 
@@ -449,9 +452,9 @@ select:hover,
 input:focus,
 textarea:focus,
 select:focus {
-    color: rgb(var(--LIGHT-RGB));
-    background-color: rgb(var(--DARK-RGB)/100%);
-    box-shadow: 2px 2px 2px rgb(var(--DARK-RGB)/0.5);
+    color: hsl(var(--LIGHT-HSL));
+    background-color: hsl(var(--DARK-HSL));
+    box-shadow: 2px 2px 2px hsl(var(--DARK-HSL)/.5);
 }
 
 .tictactoe {
@@ -489,14 +492,14 @@ select:focus {
     position: absolute;
     /* board lines */
     background-image: linear-gradient(transparent 32.5%,
-            rgb(var(--DARK-RGB)) 32.5%, rgb(var(--DARK-RGB)) 33%,
+            hsl(var(--DARK-HSL)) 32.5%, hsl(var(--DARK-HSL)) 33%,
             transparent 33%, transparent 67%,
-            rgb(var(--DARK-RGB)) 67%, rgb(var(--DARK-RGB)) 67.5%,
+            hsl(var(--DARK-HSL)) 67%, hsl(var(--DARK-HSL)) 67.5%,
             transparent 67.5%),
         linear-gradient(90deg, transparent 32.5%,
-            rgb(var(--DARK-RGB)) 32.5%, rgb(var(--DARK-RGB)) 33%,
+            hsl(var(--DARK-HSL)) 32.5%, hsl(var(--DARK-HSL)) 33%,
             transparent 33%, transparent 67%,
-            rgb(var(--DARK-RGB)) 67%, rgb(var(--DARK-RGB)) 67.5%,
+            hsl(var(--DARK-HSL)) 67%, hsl(var(--DARK-HSL)) 67.5%,
             transparent 67.5%);
     z-index: -1;
 }
@@ -520,15 +523,14 @@ select:focus {
     align-items: center;
     font-size: 1.5rem;
 
-    border: 2px solid rgb(var(--DARK-RGB)/.25);
+    border: 2px solid hsl(var(--DARK-HSL)/.25);
     border-radius: 50%;
-    background-image: radial-gradient(rgb(var(--DARK-RGB)) .75rem, transparent 70%);
+    background-image: radial-gradient(hsl(var(--DARK-HSL)) .75rem, transparent 70%);
     height: 2rem;
     width: 2rem;
-    color: rgb(var(--LIGHT-RGB));
+    color: hsl(var(--LIGHT-HSL));
     cursor: crosshair;
-    transition:
-        width .5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transition: width .5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         height 1s cubic-bezier(1, 0, 0, .75);
 }
 
@@ -538,7 +540,7 @@ select:focus {
     height: 100%;
     width: 100%;
     border-color: transparent;
-    background-color: rgb(var(--LIGHT-RGB));
+    background-color: hsl(var(--LIGHT-HSL));
     font-size: 3rem;
     font-weight: bolder;
     color: transparent;
@@ -560,14 +562,14 @@ select:focus {
 
 @keyframes tictactoe-blink {
     0% {
-        color: rgb(var(--DARK-RGB));
+        color: hsl(var(--DARK-HSL));
         border-color: red;
-        background-image: radial-gradient(transparent 25%, rgb(var(--DARK-RGB)));
+        background-image: radial-gradient(transparent 25%, hsl(var(--DARK-HSL)));
     }
 
     100% {
-        color: rgb(var(--DARK-RGB));
-        /* border-color: rgb(var(--DARK-RGB)); */
-        background-image: radial-gradient(transparent 25%, rgb(var(--DARK-RGB)));
+        color: hsl(var(--DARK-HSL));
+        /* border-color: hsl(var(--DARK-HSL)); */
+        background-image: radial-gradient(transparent 25%, hsl(var(--DARK-HSL)));
     }
 }
