@@ -109,21 +109,16 @@ main .two-column-layout {
 }
 
 .content-frame {
+    /* separate decorative top+bottom framing line from scrolling */
     min-height: 0;
     position: relative;
-}
-
-.content-frame::after {
-    /* decorative top+bottom section line */
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    top: 5px;
-    right: 2.2rem;
-    left: 5px;
-    bottom: 5px;
+    /* 13px padding - 5px inset - 3px framing line = 5px padding */
+    padding: 13px 0;
     background-image: linear-gradient(hsl(var(--DARK-HSL)) 3px, transparent 3px, transparent calc(100% - 3px),
             hsl(var(--DARK-HSL)) calc(100% - 3px));
+    background-position: 5px 5px;
+    background-size: calc(100% - 10px) calc(100% - 10px);
+    background-repeat: no-repeat;
 }
 
 .two-column-left {
