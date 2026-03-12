@@ -102,17 +102,29 @@ main {
     scrollbar-color: hsl(var(--DARK-HSL)) hsl(var(--ACCENT-HSL));
 }
 
-main .two-column-layout {
+.column-layout-one-two {
     min-height: 0;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
 }
 
+.column-layout-two-one {
+    align-self: center;
+    min-height: 0;
+    /* height: 100%; */
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
 .content-frame {
     /* separate decorative top+bottom framing line from scrolling */
     min-height: 0;
-    position: relative;
+    height: 100%;
     /* 13px padding - 5px inset - 3px framing line = 5px padding */
     padding: 13px 0;
     background-image: linear-gradient(hsl(var(--DARK-HSL)) 3px, transparent 3px, transparent calc(100% - 3px),
@@ -122,19 +134,16 @@ main .two-column-layout {
     background-repeat: no-repeat;
 }
 
-.two-column-left {
+.column-left {
     grid-column: 1;
-    grid-row: 1;
     min-height: 0;
-
-    margin-left: 3rem;
     background-color: hsl(var(--CONTENT-HSL));
-    position: relative;
 
-    box-shadow: 3px 3px hsl(var(--DARK-HSL)/0.5);
+    display: flex;
+    flex-direction: column;
 }
 
-.two-column-left .fragment-list {
+.content-list {
     overflow-y: scroll;
     height: 100%;
     display: flex;
@@ -145,20 +154,21 @@ main .two-column-layout {
     padding: 1rem .25rem 1rem 0;
 }
 
-.two-column-right {
-    grid-column: 2;
-    grid-row: 1;
+.column-right {
+    grid-column: -2 / -1;
     min-height: 0;
-
     background-color: hsl(var(--CONTENT-HSL));
-    position: relative;
 
     display: flex;
     flex-direction: column;
 }
 
+.column-shadow {
+    box-shadow: 3px 3px hsl(var(--DARK-HSL)/0.5);
+}
+
 .content {
-    overflow-y: auto;
+    overflow-y: scroll;
     scroll-behavior: smooth;
     height: 100%;
     margin-right: 5px;
@@ -183,12 +193,11 @@ main .two-column-layout {
     letter-spacing: 0.05em;
 }
 
-.content hr {
+hr {
     border: none;
     height: 3px;
     background: hsl(var(--DARK-HSL));
     width: calc(100% - .5rem);
-    margin: 1rem .25rem 1rem 0rem;
 }
 
 .content h3 {
@@ -218,6 +227,11 @@ main .two-column-layout {
     padding: .1em .25em;
     background-color: hsl(var(--DARK-HSL));
     color: hsl(var(--LIGHT-HSL));
+}
+
+p {
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 
 footer {
