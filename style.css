@@ -234,6 +234,14 @@ p {
     margin-bottom: .5em;
 }
 
+.profile-pic {
+    max-width: 100%;
+    height: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
 footer {
     /* padding will show that height stays within vh, margin will not */
     margin-top: var(--MAIN-CONTENT-MARGIN);
