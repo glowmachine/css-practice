@@ -20,11 +20,12 @@ html {
     --CONTENT-HSL: var(--HUE) 31% 80%;
     /* required for .current-page box-shadow */
     --NAV-MARGIN-BOTTOM: 1rem;
+    --MAIN-CONTENT-MARGIN: 2.5rem;
 }
 
 /* ELEMENT RULES */
 body {
-    height: inherit;
+    height: 100%;
     background-color: hsl(var(--LIGHT-HSL));
     display: flex;
     flex-direction: column;
@@ -92,9 +93,9 @@ body::before {
 }
 
 main {
-    /* beware! this requires everything to be overflow controlled */
+    height: 100%;
+    /* beware! this will require children to be overflow controlled */
     min-height: 0;
-    flex: 1;
     margin: 1rem 3rem;
     display: flex;
     flex-direction: column;
@@ -127,7 +128,6 @@ main .two-column-layout {
     min-height: 0;
 
     margin-left: 3rem;
-    padding: 1rem 0;
     background-color: hsl(var(--CONTENT-HSL));
     position: relative;
 
@@ -141,8 +141,8 @@ main .two-column-layout {
     flex-direction: column;
     list-style: none;
     gap: 0.5rem;
-    margin-right: 0.5rem;
-    padding: 1rem .5rem 1rem 0;
+    margin-right: 5px;
+    padding: 1rem .25rem 1rem 0;
 }
 
 .two-column-right {
@@ -157,16 +157,16 @@ main .two-column-layout {
     flex-direction: column;
 }
 
-.two-column-right .content {
+.content {
     overflow-y: auto;
     scroll-behavior: smooth;
-    height: calc(100% - 2rem);
+    height: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
 
-    margin-top: 1rem;
-    margin-right: 0.5rem;
-    margin-left: 1rem;
-    padding-right: .5rem;
+    padding: 1rem;
     word-spacing: .5ch;
+    line-height: 2.5ch;
 }
 
 .content-title-bar {
@@ -222,6 +222,7 @@ main .two-column-layout {
 
 footer {
     /* padding will show that height stays within vh, margin will not */
+    margin-top: var(--MAIN-CONTENT-MARGIN);
     padding-bottom: 3rem;
 }
 
@@ -376,7 +377,7 @@ hgroup {
     align-items: baseline;
     gap: 1rem;
     letter-spacing: 0.05em;
-    margin-bottom: 1rem;
+    margin-bottom: var(--MAIN-CONTENT-MARGIN);
 }
 
 hgroup h1 {
@@ -450,7 +451,7 @@ select:focus {
 }
 
 .tictactoe {
-    flex: 1;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
