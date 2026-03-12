@@ -320,6 +320,7 @@ nav .current-page {
     background-color: hsl(var(--DARK-HSL));
     box-shadow: 0px var(--NAV-MARGIN-BOTTOM) hsl(var(--DARK-HSL));
     color: hsl(var(--LIGHT-HSL));
+    outline: none;
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     /* animation: blink 1.5s ease-out 0s infinite normal forwards; */
 }
