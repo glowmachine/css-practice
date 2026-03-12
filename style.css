@@ -250,6 +250,7 @@ div.decorative-rule-dots {
 }
 
 .decorative-bar {
+    margin-left: 3rem;
     position: relative;
 }
 
@@ -267,7 +268,7 @@ div.decorative-rule-dots {
 }
 
 nav {
-    margin-left: 6rem;
+    margin-left: 3rem;
     margin-right: 3rem;
     margin-bottom: var(--NAV-MARGIN-BOTTOM);
     margin-top: 2rem;
