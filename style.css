@@ -121,6 +121,14 @@ main {
     gap: 2rem;
 }
 
+.column-layout-one-one {
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
 .content-frame {
     /* separate decorative top+bottom framing line from scrolling */
     min-height: 0;
@@ -137,6 +145,7 @@ main {
 .column-left {
     grid-column: 1;
     min-height: 0;
+    min-width: 0;
     background-color: hsl(var(--CONTENT-HSL));
 
     display: flex;
@@ -157,6 +166,7 @@ main {
 .column-right {
     grid-column: -2 / -1;
     min-height: 0;
+    min-width: 0;
     background-color: hsl(var(--CONTENT-HSL));
 
     display: flex;
