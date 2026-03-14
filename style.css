@@ -44,7 +44,6 @@ body {
 body::after {
     content: "";
     position: fixed;
-    z-index: -9999;
     inset: 0;
 
     background-image:
@@ -196,21 +195,6 @@ body::before {
     outline: none;
     background-position: left;
     color: hsl(var(--LIGHT-HSL));
-}
-
-.index-fx::before {
-    /* draw selected pointer decoration */
-    /* content: "";
-    position: absolute;
-    pointer-events: none;
-    width: 1.5rem;
-    height: 1.5rem;
-
-    background-color: hsl(var(--DARK-HSL));
-    clip-path: polygon(25% 25%, 100% 47%, 25% 75%, 0 50%);
-    left: -1.5rem;
-
-    opacity: 0%; */
 }
 
 .index-fx::after {
@@ -629,7 +613,6 @@ select:focus {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
     gap: 2rem;
 }
 
