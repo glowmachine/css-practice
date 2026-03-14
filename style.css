@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
 
 /* || RESET DEFAULT STYLES */
 * {
@@ -18,6 +19,8 @@ html {
     --DARK-HSL: var(--HUE) 11% 27%;
     --ACCENT-HSL: var(--HUE) 13% 65%;
     --CONTENT-HSL: var(--HUE) 31% 80%;
+    --DARK-SCREEN-BG: var(--HUE) 30% 4%;
+    --DARK-SCREEN-OL: var(--HUE) 30% 16%;
     /* required for .current-page box-shadow */
     --NAV-MARGIN-BOTTOM: 1rem;
     --MAIN-CONTENT-MARGIN: 2.5rem;
@@ -25,7 +28,9 @@ html {
 
 /* ELEMENT RULES */
 body {
+    /* position: absolute; */
     height: 100%;
+    /* width: 100%; */
     background-color: hsl(var(--LIGHT-HSL));
     display: flex;
     flex-direction: column;
@@ -66,6 +71,7 @@ body::after {
         /* 2 corner circles */
         top left, bottom right;
     background-repeat: no-repeat;
+    z-index: -9999;
     pointer-events: none;
 }
 
@@ -85,11 +91,146 @@ body::before {
             rgba(0, 0, 0, .3022) calc(80vw * var(--SCALAR)),
             rgba(0, 0, 0, .5) calc(100vw * var(--SCALAR))),
         /* grid overlay effect */
-        linear-gradient(to bottom, transparent 4px, rgba(0, 0, 0, 5%) 6px),
-        linear-gradient(to right, transparent 4px, rgba(0, 0, 0, 5%) 6px);
-    background-size: auto auto, 6px 6px, 6px 6px;
+        linear-gradient(to bottom, rgba(0, 0, 0, 2%) 2px, transparent 2px),
+        linear-gradient(to right, rgba(0, 0, 0, 2%) 2px, transparent 2px);
+    background-size:
+        auto auto,
+        6px 6px, 6px 6px;
     z-index: 9999;
     pointer-events: none;
+}
+
+.dark-screen {
+    display: grid;
+    grid-template-rows: 5fr 4fr 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    height: 100vh;
+}
+
+.dark-screen::after {
+    background: hsl(var(--DARK-SCREEN-BG));
+}
+
+.dark-screen::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    --SCALAR: 0.8;
+    background-image:
+        /* quadratic spotlight effect */
+        radial-gradient(circle at center,
+            transparent calc(10vw * var(--SCALAR)),
+            rgba(0, 0, 0, .0062) calc(20vw * var(--SCALAR)),
+            rgba(0, 0, 0, .0555) calc(40vw * var(--SCALAR)),
+            rgba(0, 0, 0, .1543) calc(60vw * var(--SCALAR)),
+            rgba(0, 0, 0, .3022) calc(80vw * var(--SCALAR)),
+            rgba(0, 0, 0, .5) calc(100vw * var(--SCALAR))),
+        /* grid overlay effect */
+        /* linear-gradient(to bottom, hsl(var(--DARK-SCREEN-OL)/.2) 4px, transparent 4px),
+        linear-gradient(to right, hsl(var(--DARK-SCREEN-OL)/.2) 4px, transparent 4px); */
+        repeating-conic-gradient(at 25% 75%, hsl(var(--DARK-SCREEN-OL)/.25) 0deg 90deg, transparent 90deg 360deg);
+    background-size:
+        auto auto, 6px 6px, 6px 6px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.dark-screen header {
+    grid-row: 1;
+    align-self: end;
+    font-size: 4.5rem;
+    letter-spacing: -.3ch;
+    font-family: 'Cormorant Garamond', 'Times New Roman', Times, serif;
+    white-space: nowrap;
+    transform: translateY(.6em);
+}
+
+.dark-screen footer {
+    grid-row: 3;
+    align-self: end;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: .15ch;
+}
+
+.dark-screen nav {
+    grid-row: 2;
+    align-self: center;
+    transform: translateY(2vh);
+    width: 25em;
+}
+
+.dark-screen nav ul {
+    display: flex;
+    flex-flow: column;
+    gap: .5rem;
+    font-size: 1.4rem;
+    text-transform: unset;
+}
+
+.dark-screen nav li {
+    /* 166px is min-width of 'project' link, css unable to get min-width of widest sibling */
+    background-color: transparent;
+}
+
+.dark-screen nav a {
+    display: flex;
+    justify-content: center;
+}
+
+.index-fx {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%);
+    /* background-image: linear-gradient(90deg, hsl(var(--DARK-HSL)) 50%, transparent 50%); */
+    background-size: 201% 100%;
+    background-position: right;
+    color: hsl(var(--DARK-HSL));
+
+    position: relative;
+    transition: color 0.2s ease-out, background-position 0.2s ease-out;
+}
+
+.index-fx:hover,
+.index-fx:focus {
+    outline: none;
+    background-position: left;
+    color: hsl(var(--LIGHT-HSL));
+}
+
+.index-fx::before {
+    /* draw selected pointer decoration */
+    /* content: "";
+    position: absolute;
+    pointer-events: none;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    background-color: hsl(var(--DARK-HSL));
+    clip-path: polygon(25% 25%, 100% 47%, 25% 75%, 0 50%);
+    left: -1.5rem;
+
+    opacity: 0%; */
+}
+
+.index-fx::after {
+    /* draw selected line decoration */
+    content: "";
+    position: absolute;
+    height: 100%;
+    background-image: linear-gradient(to top, white 2%,
+            transparent 2%);
+    width: 0%;
+    transition: width .25s linear;
+}
+
+.index-fx:hover::before,
+.index-fx:focus::before,
+.index-fx:hover::after,
+.index-fx:focus::after {
+    /* reveal selected line decoration */
+    animation: oscillate .1s steps(10) infinite;
+    width: 100%;
 }
 
 main {
@@ -328,7 +469,7 @@ nav li {
     letter-spacing: .05em;
     white-space: nowrap;
 
-    display: inline-flex;
+    display: flex;
     align-items: center;
 }
 
@@ -598,5 +739,49 @@ select:focus {
         color: hsl(var(--DARK-HSL));
         /* border-color: hsl(var(--DARK-HSL)); */
         background-image: radial-gradient(transparent 25%, hsl(var(--DARK-HSL)));
+    }
+}
+
+@keyframes oscillate {
+
+    0%,
+    100% {
+        clip-path: inset(0 10% 0 10%);
+    }
+
+    10% {
+        clip-path: inset(0 7% 0 12%);
+    }
+
+    20% {
+        clip-path: inset(0 15% 0 5%);
+    }
+
+    30% {
+        clip-path: inset(0 8% 0 8%);
+    }
+
+    40% {
+        clip-path: inset(0 5% 0 15%);
+    }
+
+    50% {
+        clip-path: inset(0 10% 0 10%);
+    }
+
+    60% {
+        clip-path: inset(0 12% 0 7%);
+    }
+
+    70% {
+        clip-path: inset(0 6% 0 14%);
+    }
+
+    80% {
+        clip-path: inset(0 9% 0 9%);
+    }
+
+    90% {
+        clip-path: inset(0 14% 0 5%);
     }
 }
