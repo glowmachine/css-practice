@@ -100,7 +100,6 @@
                                 <dd>A remote repository that's a replica of a different remote repository. Different owners but same structure, they allow merging between forks (i.e., pulls and pull requests).</dd>
                             </dl>
                         </article>
-                        <hr>
                         <article>
                             <h3 id="network">Network Setup</h3>
                             <dl>
@@ -110,9 +109,14 @@
                                 <dd>Print the public key <code>id_ed25519.pub</code>, if it exists.</dd>
                                 <dt><code>ls ~/.ssh/id_ed25519</code></dt>
                                 <dd>List the private key <code>id_ed25519</code>, if it exists. You don't need to know what it is, just that it should be there. Anyone who gets a hold of this has full access to anything that trust it via the public key, so keep it secret.</dd>
+                                <dt><code>ssh -T -p 22 git@github.com</code></dt>
+                                <dd>Test if SSH can connect to github via port 22, the default port for SSH</dd>
+                                <dt><code>ssh -T -p 443 git@ssh.github.com</code></dt>
+                                <dd>Test if SSH can connect to github via port 443, the default port for HTTPS (for when port 22 is blocked, common on public wifi networks)</dd>
+                                <dt><code>~/.ssh/config</code></dt>
+                                <dd>file for assigning default ports used to connect with hosts</dd>
                             </dl>
                         </article>
-                        <hr>
                         <article>
                             <h3 id="config">Git Config</h3>
                             <dl>
@@ -138,12 +142,284 @@
                                 <dt><code>git config --global core.editor "<em>code --wait</em>"</code></dt>
                                 <dd>set the default text editor to VS Code</dd>
                                 <dt><code>git remote add <em>alias</em> <em>remoteurl</em></code></dt>
-                                <dd>start tracking <code><em>remoteurl</em></code> named <code><em>alias</em></code> as a remote repository for the local repo (<code>origin</code> is usually the name of the remote repo)</dd>
+                                <dd>start tracking <code><em>remoteurl</em></code> named <code><em>alias</em></code> as a remote repository for the local repo</dd>
                                 <dt><code>git remote remove <em>alias</em></code></dt>
                                 <dd>stop tracking <code><em>alias</em></code> as a remote repo for the local repo</dd>
                                 <dt><code>git remote</code></dt>
                                 <dd>list the aliases of the remote repos tracked by the local repo (add <code>-v</code> for <code>--verbose</code> to list URLs with aliases)</dd>
                             </dl>
+                        </article>
+                        <article>
+                            <h3 id="variables">Variables</h3>
+                            <dl>
+                                <dt>commit IDs</dt>
+                                <dd>a 40-digit hexadecimal value, but can be referenced using any number of digits (usually 7) as long as they are unambiguous</dd>
+                                <dt><code>HEAD</code></dt>
+                                <dd>pointer to the current commit, switches the files available in the working directory</dd>
+                                <dt><code>HEAD~n</code></dt>
+                                <dd>pointer to the nth previous commit of the current branch</dd>
+                                <dt>"detached head"</dt>
+                                <dd>warning, <code>HEAD</code> points to a commit that isn't a branch tip, some actions are restricted from this location</dd>
+                                <dt>branch name</dt>
+                                <dd>an alias for the branch tip, its most recent commit</dd>
+                                <dt>remote repository name</dt>
+                                <dd>an alias for the remote repo's URL, does not have to match the repo's actual name</dd>
+                                <dt>"remotealias/remotebranch"</dt>
+                                <dd>the fetched copy of the remote alias and remote branch</dd>
+                                <dt>"origin"</dt>
+                                <dd>often the alias given to the remote repository</dd>
+                                <dt>"main"</dt>
+                                <dd>often the name of the main branch, synonymous with and previously known as the "master" branch</dd>
+                            </dl>
+                        </article>
+                        <article>
+                            <h3 id="navigation">Branch Navigation</h3>
+                            <dl>
+                                <dt><code>git switch <em>branchname/commitid</em></code></dt>
+                                <dd>move <code>HEAD</code> to <code><em>branchname</em></code>'s tip or to a specific <em>commitid</em></code></code></dd>
+
+                                <dt><code>git switch -c <em>branchname</em></code></dt>
+                                <dd>create a branch called <code><em>branchname</em></code> and switch <code>HEAD</code> to it (edited files both staged and not yet staged will follow <code>HEAD</code> to the new branch)</dd>
+
+                                <dt><code>git branch</code></dt>
+                                <dd>show list of local branches</dd>
+
+                                <dt><code>git branch -r</code></dt>
+                                <dd>show list of remote branches (<code>-r</code> for <code>--remote</code>)</dd>
+
+                                <dt><code>git branch --all</code></dt>
+                                <dd>show list of all branches, local and remote</dd>
+
+                                <dt><code>git branch <em>branchname</em></code></dt>
+                                <dd>create a branch called <code><em>branchname</em></code>, but do not switch to it</dd>
+
+                                <dt><code>git branch -d <em>branchname</em></code></dt>
+                                <dd>delete <code><em>branchname</em></code> (<code>-d</code> for <code>--delete</code>)</dd>
+
+                                <dt><code>git branch -D <em>branchname</em></code></dt>
+                                <dd>delete <code><em>branchname</em></code> even if it has unmerged changes (<code>-D</code> for <code>--delete --force</code>)</dd>
+
+                                <dt><code>git branch -u <em>remotealias</em>/<em>remotebranch</em></code></dt>
+                                <dd>set the default <code><em>remotealias</em></code> and <code><em>remotebranch</em></code> for the current branch, <code>-u</code> short for <code>--set-upstream-to=<em>repoalias</em>/<em>remotebranch</em></code></dd>
+
+                                <dt><code>git branch -u <em>remotealias</em>/<em>remotebranch</em> <em>branchname</em></code></dt>
+                                <dd>set the default <code><em>remotealias</em></code> and <code><em>remotebranch</em></code> for <code><em>branchname</em></code></dd>
+
+                                <dt><code>git reset <em>commitid</em></code></dt>
+                                <dd>
+                                    move <code>HEAD</code> to <code><em>commitid</em></code> or <code><em>HEAD~n</em></code> and erase commit history after that point, the most up to date changes made so far are retained but unstaged (this is the default <code>--mixed</code> behavior)
+                                    <ul>
+                                        <li><code>git reset --soft <em>commitid</em></code>: move <code>HEAD</code> to <code><em>commitid</em></code> and staged the most up to date changes</li>
+                                        <li><code>git reset --hard <em>commitid</em></code>: move <code>HEAD</code> to <code><em>commitid</em></code> and discard all changes made after it</li>
+                                        <li><code>git reset</code> can break repositories, do not use on shared repos unless you know what you're doing</li>
+                                        <li>if you mess up, use <code>git reflog</code> to find a <code><em>HEAD@{n}</em></code> to reset back to in the same way</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </article>
+                        <article>
+                            <h3 id="workflow">Workflow</h3>
+                            <dl>
+                                <dt><code>git add <em>file</em></code></dt>
+                                <dd>add <code><em>file</em></code> that has been edited to the staging area (and start tracking it if not already)</dd>
+
+                                <dt><code>git add .</code></dt>
+                                <dd>add all files to the staging area (and start tracking it if not already)</dd>
+
+                                <dt><code>git rm --cached <em>file</em></code></dt>
+                                <dd>stop tracking <code><em>file</em></code></dd>
+
+                                <dt><code>git rm <em>file</em></code></dt>
+                                <dd>delete <code><em>file</em></code></dd>
+
+                                <dt><code>git restore <em>file</em></code></dt>
+                                <dd>restore <code><em>file</em></code> to its original commit state (undo edits)</dd>
+
+                                <dt><code>git restore --staged <em>file</em></code></dt>
+                                <dd>remove <code><em>file</em></code> from the staging area (keep edits)</dd>
+
+                                <dt><code>git restore --source=<em>commitid</em> <em>file</em></code></dt>
+                                <dd>restore <code><em>file</em></code> from <code><em>commitid</em></code> (edit and unstaged)</dd>
+
+                                <dt><code>git revert <em>commitid</em></code></dt>
+                                <dd> make a new commit that undoes the changes made in <code><em>commitid</em></code> or range <code><em>commitid</em>...<em>commitid</em></code></dd>
+
+                                <dt><code>git commit</code></dt>
+                                <dd>open text editor for commit message, save and exit to commit staged files</dd>
+
+                                <dt><code>git commit -a</code></dt>
+                                <dd>open text editor for commit message, save and exit to commit staged files after automatically staging tracked files</dd>
+
+                                <dt><code>git commit --amend</code></dt>
+                                <dd>replace the commit with a new commit (new commit ID as well)</dd>
+
+                                <dt><code>git diff <em>commitid0</em> <em>commitid1</em></code></dt>
+                                <dd>show difference between <code><em>commitid0</em></code> and <code><em>commitid1</em></code></dd>
+
+                                <dt><code>git push</code></dt>
+                                <dd>upload the current branch's new commits to the default remote repo's branch</dd>
+
+                                <dt><code>git push <em>remotealias</em> <em>remotebranch</em></code></dt>
+                                <dd>upload the current branch's new commits to <code><em>remotealias</em></code>'s <code><em>remotebranch</em></code> if they haven't already been set to default by <code>git branch -u <em>remotealias</em>/<em>remoterepo</em> <em>branchname</em></code>,</dd>
+
+                                <dt><code>git push --force-with-lease</code></dt>
+                                <dd>update the remote branch with the local branch if it hasn't changed since the last fetched, only required why your local's history doesn't move forward from remote's history</dd>
+
+                                <dt><code>git push --force</code></dt>
+                                <dd>update the remote branch with the local branch while overwriting any changes</dd>
+
+                                <dt><code>git fetch</code></dt>
+                                <dd>download commits on the default remote repo, but don't merge anything</dd>
+
+                                <dt><code>git fetch <em>remotealias</em></code></dt>
+                                <dd>download commits on <code><em>remotealias</em></code>, but don't merge</dd>
+
+                                <dt><code>git fetch <em>remotealias</em> <em>remotebranch</em></code></dt>
+                                <dd>download commits on <code><em>remotebranch</em></code> of <code><em>remotealias</em></code>, but don't merge</dd>
+
+                                <dt><code>git pull</code></dt>
+                                <dd>download commits on the default remote repo and merge, similar syntax as <code>git fetch</code> (<code>--merge</code> is the default unless changed in <code>~/.gitconfig</code>, add <code>--rebase</code> to the file to rebase instead)</dd>
+
+                                <dt><code>git merge <em>branchname</em></code></dt>
+                                <dd>merge a local <code><em>branchname</em></code> into the current branch (merging, and merging by pulling, creates a new commit)</dd>
+
+                                <dt><code>git merge <em>remotealias</em>/<em>remotebranch</em></code></dt>
+                                <dd>merge <code><em>remotebranch</em></code> of <code><em>remotealias</em></code> into current branch (this is the fetched copy of <code>remotebranch</code>, not the same as <code>git pull</code> that downloads the newest commit before merging)</dd>
+                            </dl>
+                        </article>
+                        <article>
+                            <h3 id="advworkflow">Advanced Workflow</h3>
+                            <dl>
+                                <dt><code>git add -p</code></dt>
+                                <dd>interactive staging: stage chunks of changes at a time that can be committed separately, enter <code>?</code> and <code>q</code> to quit early
+                                <dt><code>git rebase <em>remotealias</em>/<em>remotebranch</em></code></dt>
+                                <dd>rebasing: if fetched, start rebasing the current branch to <code><em>remotebranch</em></code> of <code><em>remotealias</em></code>
+                                <dt><code>git rebase --interactive <em>commitid</em></code></dt>
+                                <dd>squashing: start interactive rebase onto <code><em>commitid</em></code> <br>Select action for commits between HEAD and <code><em>commitid</em></code>
+                                <dt><code>git cherry-pick <em>commitid</em></code></dt>
+                                <dd>cherry-picking: merge <code><em>commitid</em></code> onto the current branch</dd>
+                            </dl>
+                        </article>
+                        <article id="stash">
+                            <h3>Stashes</h3>
+                            <dl>
+                                <dt><code>git stash</code></dt>
+                                <dd>create a snapshots of the current changes</dd>
+                                <dt><code>git stash save <em>type: description</em></code></dt>
+                                <dd>create a stash with the message <code><em>type: description</em></code></dd>
+                                <dt><code>git stash list</code></dt>
+                                <dd>list all stashes</dd>
+                                <dt><code>git stash apply stash@{n}</code></dt>
+                                <dd>apply changes from the nth stash</dd>
+                                <dt><code>git stash pop stash@{n}</code></dt>
+                                <dd>apply changes from the nth stash and remove it from the stash list</dd>
+                                <dt><code>git stash drop stash@{n}</code></dt>
+                                <dd>remove the nth stash from the stash list</dd>
+                                <dt><code>git stash clear</code></dt>
+                                <dd>remove all stashes</dd>
+                            </dl>
+                        </article>
+                        <article>
+                            <h3 id="history">Viewing History</h3>
+                            <dl>
+                                <dt><code>git status</code></dt>
+                                <dd>show changes since the previous commit</dd>
+                                <dt><code>git log</code></dt>
+                                <dd>show commit history for the current branch, flags below can be combined:
+                                    <ul>
+                                        <li><code>--all</code> : include all branches</li>
+                                        <li><code>--graph</code> : include the commit tree</li>
+                                        <li><code>--oneline</code> : limits details to one line per commit</li>
+                                    </ul>
+                                </dd>
+                                <dt><code>git reflog</code></dt>
+                                <dd>show history of head pointer movements made on the current repository, commit IDs ordered by most recent and can be used to revert git reset</dd>
+                            </dl>
+                        </article>
+                        <article>
+                            <h3 id="commits">Commit Messages</h3>
+                            <dl>
+                                <dt>What are atomic commits?</dt>
+                                <dd>
+                                    <ul>
+                                        <li>The practice of creating one commit per logical change. Don't do any extra work like styling or refactoring. If it doesn't need to be touched for the task at hand, leave it for a separate commit.</li>
+                                        <li>It keeps history easy to read, review, and revert if needed.</li>
+                                        <li>Can lead to enormous commit history, but is easily managed with branching and squashing (interactive rebasing).</li>
+                                    </ul>
+                                </dd>
+                                <dt><code><em>type</em>(<em>scope</em>): <em>subject</em></code></dt>
+                                <dd>or</dd>
+                                <dt><code>
+                                        <em>type</em>(<em>scope</em>): <em>subject</em><br>
+                                        BLANK LINE<br>
+                                        <em>body</em><br>
+                                        BLANK LINE<br>
+                                        <em>footer</em>
+                                    </code></dt><br>
+                                <dt>The <code><em>type</em></code> should be...</dt>
+                                <dd>
+                                    <ul>
+                                        <li><code>build</code>: updating tools and libraries</li>
+                                        <li><code>chore</code>: updating dependencies</li>
+                                        <li><code>ci</code>: updating automation</li>
+                                        <li><code>docs</code>: updating documentation, no code</li>
+                                        <li><code>feat</code>: updating features</li>
+                                        <li><code>fix</code>: fixing bugs</li>
+                                        <li><code>perf</code>: performance improvements</li>
+                                        <li><code>refactor</code>: cleaning up code</li>
+                                        <li><code>revert</code>: <code><em>original commit message</em></code></li>
+                                        <li><code>style</code>: formatting code</li>
+                                        <li><code>test</code>: updating tests</li>
+                                    </ul>
+                                </dd>
+                                <dt>The <code><em>scope</em></code> is optional, one word that specifies what the commit relates to.</dt><br>
+                                <dt>The <code><em>subject</em></code> should...</dt>
+                                <dd>
+                                    <ul>
+                                        <li>be written in the imperative mood (a command or instruction)</li>
+                                        <li>not be capitalized (e.g. “add dark mode ui”)</li>
+                                        <li>not end with a period</li>
+                                        <li>be no more than 70 characters wide</li>
+                                    </ul>
+                                </dd>
+                                <dt>The <code><em>body</em></code> should...</dt>
+                                <dd>
+                                    <ul>
+                                        <li>be written in the present tense</li>
+                                        <li>be exactly: <code>This reverts commit <em>hash</em></code> if the commit is a revert</li>
+                                        <li>be should be no more than 100 characters wide</li>
+                                    </ul>
+                                </dd>
+                                <dt>The <code><em>footer</em></code> should...</dt>
+                                <dd>
+                                    <ul>
+                                        <li>be used when a commit introduces changes that may break existing code</li>
+                                        <li>start with <code>BREAKING CHANGE:</code> and explain why the change is not backwards compatible</li>
+                                        <li>when present, the commit message type must be written as <code><em>type</em>!</code> instead of <code><em>type</em></code></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </article>
+                        <article id="resources">
+                            <h3>Additional Resources</h3>
+                            <ul>
+                                <li><em>Article:</em> <a href="https://www.theodinproject.com/lessons/foundations-command-line-basics" rel="noopener noreferrer" target="_blank">Command Line Basics</a> (theodinproject)</li>
+                                <li><em>Article:</em> <a href="https://www.theodinproject.com/lessons/foundations-setting-up-git" rel="noopener noreferrer" target="_blank">Setting up Git</a> (theodinproject)</li>
+                                <li><em>Article:</em> <a href="https://www.theodinproject.com/lessons/foundations-introduction-to-git" rel="noopener noreferrer" target="_blank">Introduction to Git</a> (theodinproject)</li>
+                                <li><em>Article:</em> <a href="https://www.theodinproject.com/lessons/foundations-git-basics" rel="noopener noreferrer" target="_blank">Git Basics</a> (theodinproject)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=e9lnsKot_SQ" rel="noopener noreferrer" target="_blank">How Git Works: Explained in 4 Minutes</a> (bytebytego)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=mAFoROnOfHs" rel="noopener noreferrer" target="_blank">Git &amp; GitHub Crash Course for Beginners</a> (freeCodeCamp &amp; LogicBase Labs)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=0chZFIZLR_0" rel="noopener noreferrer" target="_blank">Git MERGE vs REBASE: Everything You Need to Know</a> (bytebytego)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=DkWDHzmMvyg" rel="noopener noreferrer" target="_blank">git rebase - Why, When &amp; How to fix conflicts</a> (philomatics)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=42392W7SgnE" rel="noopener noreferrer" target="_blank">git interactive rebase - Undo, Edit &amp; Squash git commits with a single command</a> (philomatics)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=blbzIgM-aOU" rel="noopener noreferrer" target="_blank">The BEST git command you've never heard of | GIT ADD PATCH</a> (typecraft)</li>
+                                <li><em>Video:</em> <a href="https://www.youtube.com/watch?v=WPCxtFkLa7g" rel="noopener noreferrer" target="_blank">Never* use git cherry-pick</a> (philomatics)</li>
+                                <li><em>Manual:</em> <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" rel="noopener noreferrer" target="_blank">Getting Started - About Version Control</a> (git)</li>
+                                <li><em>Manual:</em> <a href="https://git-scm.com/cheat-sheet" rel="noopener noreferrer" target="_blank">Git Cheat Sheet</a> (git)</li>
+                                <li><em>Article:</em> <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" rel="noopener noreferrer" target="_blank">Basic writing and formatting syntax</a> (GitHub)</li>
+                                <li><em>Article:</em> <a href="https://www.conventionalcommits.org/en/v1.0.0/" rel="noopener noreferrer" target="_blank">A specification for adding human and machine readable meaning to commit messages</a> (conventionalcommits.org)</li>
+                                <li><em>Article:</em> <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional" rel="noopener noreferrer" target="_blank">commitlint</a> (escapedcat)</li>
+                            </ul>
                         </article>
                     </div>
                 </div>
