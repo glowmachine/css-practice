@@ -309,7 +309,7 @@ main {
     margin-right: 5px;
     margin-left: 5px;
 
-    padding: 1rem;
+    padding: 0 1rem;
     word-spacing: .5ch;
     line-height: 2.5ch;
 }
@@ -331,14 +331,15 @@ main {
 hr {
     border: none;
     height: 3px;
-    background: hsl(var(--DARK-HSL));
-    width: calc(100% - .5rem);
+    background: hsl(var(--ACCENT-HSL));
 }
 
 .content h3 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    padding-bottom: 1em;
+    font-size: inherit;
+    font-weight: inherit;
+    box-shadow: 0px 3px hsl(var(--ACCENT-HSL));
+    padding-bottom: .25em;
+    margin-bottom: .5em;
 }
 
 .content dt {
