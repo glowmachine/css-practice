@@ -97,6 +97,9 @@ body::before {
         6px 6px, 6px 6px;
     z-index: 9999;
     pointer-events: none;
+
+    background-color: black;
+    animation: fade-in 1s ease-out forwards;
 }
 
 .dark-screen {
