@@ -468,8 +468,7 @@ nav .current-page {
     box-shadow: 0px var(--NAV-MARGIN-BOTTOM) hsl(var(--DARK-HSL));
     color: hsl(var(--LIGHT-HSL));
     outline: none;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-    /* animation: blink 1.5s ease-out 0s infinite normal forwards; */
+    animation: blink 1.5s ease-out infinite alternate;
 }
 
 .clickable .material-icons,
@@ -702,16 +701,23 @@ select:focus {
     animation: tictactoe-blink 2s 1s infinite;
 }
 
+@keyframes fade-in {
+    to {
+        background-color: unset;
+    }
+}
+
 @keyframes blink {
 
     0%,
-    50%,
-    100% {
-        opacity: 100%;
+    75% {
+        background-color: hsl(var(--DARK-HSL));
+        box-shadow: 0px var(--NAV-MARGIN-BOTTOM) hsl(var(--DARK-HSL));
     }
 
-    25% {
-        opacity: 50%;
+    100% {
+        background-color: hsl(var(--ACCENT-HSL));
+        box-shadow: 0px var(--NAV-MARGIN-BOTTOM) hsl(var(--ACCENT-HSL));
     }
 }
 
