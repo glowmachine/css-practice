@@ -384,7 +384,7 @@ p {
 footer {
     /* padding will show that height stays within vh, margin will not */
     margin-top: var(--MAIN-CONTENT-MARGIN);
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
 }
 
 div.decorative-rule-line {
