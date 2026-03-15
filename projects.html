@@ -33,14 +33,108 @@
             <h1>Projects</h1>
             <p>Collection</p>
         </hgroup>
-        <section>
-            <article>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dignissimos, laboriosam aperiam enim adipisci quibusdam magni! Animi illo quibusdam voluptas quis facere? Ipsa accusantium temporibus minus fuga necessitatibus sed reprehenderit!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minus aliquid odio sit delectus animi voluptatum labore facilis quis earum facere incidunt iusto nobis dolorem sint, excepturi veritatis assumenda. Voluptatem necessitatibus officiis quia quas perspiciatis nulla sequi quis. Quaerat repudiandae harum dolor consequatur adipisci laborum earum distinctio, nisi soluta inventore maxime voluptatum placeat eligendi quod optio cum vitae illum eaque?</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi quis quia sit maiores eveniet cupiditate illo vero necessitatibus similique. Fugiat iusto voluptatem quo labore vel quidem, placeat sed possimus, reprehenderit est esse aperiam, ipsum aspernatur? Debitis, dolore! Odit consequatur minima laboriosam consectetur? Perferendis officiis sequi suscipit velit soluta cum totam nam. Modi, eveniet? Rem facere eveniet, nemo dolorem mollitia natus iusto exercitationem officia iste eaque blanditiis? Quisquam nobis numquam dolorum quae sequi aut quibusdam dolorem et non alias, molestiae officia adipisci. Vero beatae aspernatur repellendus omnis enim expedita, necessitatibus molestias facere exercitationem error eius, quisquam eum nihil unde vel sit repudiandae! Accusantium, facilis. Maiores tenetur, assumenda expedita, labore amet deleniti fugit itaque tempora, adipisci sapiente explicabo corporis necessitatibus qui eum.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, dicta cupiditate possimus animi numquam, impedit itaque ipsa illo non quasi eum fuga, adipisci amet perspiciatis vitae? Eum consequatur accusantium sunt ipsum similique ut error porro vel sit reiciendis a omnis voluptatem rerum, rem, quae quibusdam asperiores incidunt? Delectus saepe recusandae qui assumenda officiis unde odit inventore nostrum? Natus quae nemo magnam quo veniam fugit quas error delectus ea porro omnis voluptate, eius ex recusandae ut cupiditate atque enim ipsum ullam libero corporis pariatur fugiat hic deleniti. Quam odio recusandae officiis?</p>
-            </article>
-        </section>
+        <div class="column-layout-one-one">
+            <section class="column-left column-shadow content-frame decorative-bar">
+                <ul class="content-list">
+                    <li><a href="#nier" class="fx clickable"><i class="material-icons">code</i>Nier:Automata&trade; menu in pure CSS</a></li>
+                    <li><a href="#git" class="fx clickable"><i class="material-icons">code</i>Personal Git cheatsheet in pure HTML</a></li>
+                    <li><a href="#salon" class="fx clickable"><i class="material-icons">photo</i>Portraits with a Salon Studio</a></li>
+                    <li><a href="#ballet" class="fx clickable"><i class="material-icons">photo</i>Portraits with a Ballet Theatre</a></li>
+                </ul>
+            </section>
+            <section class="column-right">
+                <div class="content-title-bar">
+                    <i class="material-icons">square</i>
+                    <h2>Details</h2>
+                </div>
+                <div class="content-frame">
+                    <div class="content">
+                        <article>
+                            <h3 id="nier">Nier:Automata&trade; menu in pure CSS</h3>
+                            <section class="thumbnail-grid">
+                                <img src="img/nier-git.png" alt="" class="thumbnail">
+                                <img src="img/nier-minigame.png" alt="" class="thumbnail">
+                                <img src="img/nier-contact.png" alt="" class="thumbnail">
+                            </section>
+                            <p>This project was created for learning CSS, an exercise that took two weeks. After the lesson portion of David Gray's <a href="https://youtu.be/n4R2E7O-Ngo?si=5K5243NQbYdwvJ_7">CSS course for beginners</a>, I decided to substitute this in place of the final project. I felt he had taught me well enough to search for exactly what else I needed to learn along the way.</p>
+                            <p>Most of my time was spent going through the documentation on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN</a>, troubleshooting issues that either aren't well-covered or easily found on Stack Overflow and YouTube. I would like to eventually record a full course on learning CSS through the making of this site, or a series of videos of my own about the complex issues I needed to resolve throughout the process, but will save that for when I have more time and experience.</p>
+                            <p>Some of the most invaluable skills I learned were how to:</p>
+                            <ul>
+                                <li>do interactive staging and atomic conventional commits in git</li>
+                                <li>do atomic conventional commits</li>
+                                <li>use the browser inspector and developer tools</li>
+                                <li>abstract properties into separate rulesets to style in different contexts without repeating the same lines</li>
+                                <li>use containers and pseudo elements to draw visuals like gradients and shapes</li>
+                                <li>create transitions, animations, and effects without javascript</li>
+                                <li>assign variables to keep certain values synced across different rulesets</li>
+                                <li>troubleshoot the interactions between flex and grid properties with their content and container properties</li>
+                                <li>although not ideal, practice how to implement responsive design from a desktop-first approach for updating existing products</li>
+                            </ul>
+                            <p>At the time of writing, the site is incomplete. Still left to do are:</p>
+                            <ul>
+                                <li>media querying for smaller screens</li>
+                                <li>abstracting more common properties, combining verbose properties, removing unused properties</li>
+                                <li>polishing up margins and transition effects</li>
+                                <li>reviewing html for accessibility</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h3 id="git">Personal Git cheatsheet in pure HTML</h3>
+                            <section class="thumbnail-grid">
+                                <img src="img/git-1.png" alt="" class="thumbnail">
+                                <img src="img/git-2.png" alt="" class="thumbnail">
+                                <img src="img/git-3.png" alt="" class="thumbnail">
+                            </section>
+                            <p>This project was created for practicing HTML and reviewing how to use git. After completing David Gray's HTML course for beginners<a href="https://www.youtube.com/watch?v=mJgBOIoGihA"></a>, I decided to put the notes I had taken while learning Git into a basic HTML document. It features a simple navigation menu with anchor links and content using many description lists inside articles separating each category. Also has a list of references for sources and additional information, and a contact form for practice at the end.
+                            <p>Some of the most invaluable skills I learned were how to:</p>
+                            <ul>
+                                <li>use basic git commands</li>
+                                <li>use semantic tags to structure with context</li>
+                                <li>use anchor tags and reference links</li>
+                            </ul>
+                            <p> The page was intended to be combined with the next project involving CSS, as it didn't feel like I could do much more than what I could with a word doc when being limited to only HTML nothing else. I did have to at least style the code elements.</p>
+                        </article>
+                        <article>
+                            <h3 id="salon">Portraits with a Salon</h3>
+                            <section class="thumbnail-grid">
+                                <img src="img/salon-1.jpg" alt="" class="thumbnail">
+                                <img src="img/salon-2.jpg" alt="" class="thumbnail">
+                                <img src="img/salon-3.jpg" alt="" class="thumbnail">
+                            </section>
+                            <p>A few years ago, I reached out to collaborate with a local salon to help create a set of portraits. We were a team of hairsylists, makeup artists, models, and myself as photographer and editor. Over three photoshoots, we worked together to capture different variations of a light and natural vibe that would match their business' energy.</p>
+                            <p>I had only worked in hospital rooms and live theaters up until then so having complete control over lighting with plenty of space for my equipment was a breath of fresh air. However, unlike other portraits I had taken before, these were beauty portraits and called for significantly more retouching. Every patch of skin needed to be unblemished, every stray hair needed to be out of the way, every skinfold and crease of clothing needed to be unassuming. AI has changed the game today but, back then, I needed techniques like layermasking and frequency separation. Over 1000 photos later, we had 10 keepers, and the work on each one took several hours. It's safe to say that post-processing took more time as the photoshoots themselves.</p>
+                            <p>Some of the most invaluable skills I learned were how to:</p>
+                            <ul>
+                                <li>simplify communication to get the desired results more efficiently</li>
+                                <li>collaborate in a team of people with different specialties</li>
+                            </ul>
+                            <p>I had always shot and edited my own images but this was probably the point I should have outsourced my editing to focus on what I did best. Regardless, it was a invaluable experience and a pleasure to work with those talented creatives. I'm very grateful to have had the chance to see it through from start to finish.</p>
+                        </article>
+                        <article>
+                            <h3 id="ballet">Portraits with a Ballet Theatre</h3>
+                            <section class="thumbnail-grid">
+                                <img src="img/nutcracker-1.jpg" alt="" class="thumbnail">
+                                <img src="img/nutcracker-2.jpg" alt="" class="thumbnail">
+                                <img src="img/nutcracker-3.jpg" alt="" class="thumbnail">
+                                <img src="img/bts-1.jpg" alt="" class="thumbnail">
+                                <img src="img/giselle-1.jpg" alt="" class="thumbnail">
+                                <img src="img/bts-2.jpg" alt="" class="thumbnail">
+                            </section>
+                            <p>Several years ago, I wanted to do dance photography. Specifically, I wanted to shoot ballet because, despite it being an art, there was such a thing as a objectively good or bad photo. After approaching several companies, I decided to work with a school whose director and manager were open to helping me select photos and develop an eye for form.</p>
+                            <p>With their help, I learned that the position of a hand, the curve of a wrist, the angle of a foot, the bend of an arm or a leg -- basically every shape made with a dancer's body could make or break an otherwise beautiful photo. The performance was art in motion, but still images were mainly about proper form. It wasn't uncommon for conventionally beautiful photos to be be called garbage, or have a photo pulled from my rejects pile and be told it was a keeper. I quickly realized ballet was perhaps more skill than art in the traditional sense, and I was thrilled that it matched my pursuit of getting the perfect shot.</p>
+                            <p>Some of the most invaluable skills I learned were how to:</p>
+                            <ul>
+                                <li>propose a partnership and structure legal agreements</li>
+                                <li>evaluate different solutions for deliverables</li>
+                                <li>develop a streamlined workflow to expedite sales</li>
+                                <li>run a small business</li>
+                            </ul>
+                            <p>Before I left the area, I had done backstage editorials, dance rehersals, and onstage performances for Giselle and two seasons of the Nutcracker. I consider myself very lucky to have had the opportunity to work with them and their amazing students, and it was one of the most important experiences that shaped me as a photographer.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
     <footer>
         <div class="decorative-rule-line">
