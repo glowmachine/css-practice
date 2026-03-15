@@ -484,6 +484,7 @@ nav .current-page {
             transparent 50%);
     background-size: 201% 100%;
     background-position: right;
+    background-repeat: no-repeat;
     color: hsl(var(--DARK-HSL));
 
     position: relative;
