@@ -37,7 +37,7 @@ body {
 
     color: hsl(var(--DARK-HSL));
     font-family: "Roboto", Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 300;
 }
 
@@ -218,6 +218,11 @@ body::before {
     /* reveal selected line decoration */
     animation: oscillate .1s steps(10) infinite;
     width: 100%;
+}
+
+header {
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 main {
@@ -429,10 +434,8 @@ div.decorative-rule-dots {
 }
 
 nav {
-    margin-left: 3rem;
-    margin-right: 3rem;
     margin-bottom: var(--NAV-MARGIN-BOTTOM);
-    margin-top: 2rem;
+    margin-top: 1.8rem;
 }
 
 nav ul {
@@ -441,17 +444,16 @@ nav ul {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    gap: 1.75rem;
+    gap: 2rem;
 }
 
 nav li {
-    /* 166px is min-width of 'project' link, css unable to get min-width of widest sibling */
-    flex: 1 0 0px;
+    width: 8.25em;
     background-color: hsl(var(--ACCENT-HSL));
 }
 
 .clickable {
-    padding: 0.25em 0.25em;
+    padding: 0.1em 0.1em;
     width: 100%;
     text-decoration: none;
     letter-spacing: .05em;
@@ -473,8 +475,8 @@ nav .current-page {
 
 .clickable .material-icons,
 .content-title-bar .material-icons {
-    margin-right: 0.2em;
-    font-size: 1.25em;
+    /* margin-right: 0.05em; */
+    font-size: 2rem;
 }
 
 .fx {
@@ -544,12 +546,14 @@ hgroup {
 
 hgroup h1 {
     text-transform: uppercase;
+    font-size: 2.75rem;
     font-weight: 350;
-    text-shadow: .3rem .3rem 0 hsl(var(--ACCENT-HSL));
+    text-shadow: .4rem .4rem 0 hsl(var(--ACCENT-HSL));
 }
 
 hgroup p {
     text-transform: capitalize;
+    font-size: 1.5rem;
     font-weight: 400;
     position: relative;
     left: -0.8rem;
