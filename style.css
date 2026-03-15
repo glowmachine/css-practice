@@ -260,7 +260,7 @@ main {
 .content-frame {
     /* separate decorative top+bottom framing line from scrolling */
     min-height: 0;
-    height: 100%;
+    /* height: 100%; */
     /* 13px padding - 5px inset - 3px framing line = 5px padding */
     padding: 13px 0;
     background-image: linear-gradient(hsl(var(--DARK-HSL)) 3px, transparent 3px, transparent calc(100% - 3px),
@@ -559,6 +559,67 @@ hgroup p::before {
     content: "- ";
     position: relative;
     left: .2em;
+}
+
+h2.sub-hgroup {
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: .05em;
+    margin-bottom: var(--MAIN-CONTENT-MARGIN);
+    position: relative;
+
+    padding: .25rem 2.5rem;
+    background-image: linear-gradient(hsl(var(--DARK-HSL)) 3px,
+            transparent 2px, transparent calc(100% - 3px),
+            hsl(var(--DARK-HSL)) calc(100% - 3px));
+}
+
+.content article {
+    margin-bottom: 2em;
+}
+
+.content a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.content a::after {
+    content: "launch";
+    font-family: "Material Icons";
+    vertical-align: super;
+    line-height: inherit;
+    font-size: 1rem;
+}
+
+.content a:focus,
+.content a:hover {
+    color: hsl(var(--ACCENT-HSL));
+}
+
+.thumbnail-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    margin: .5rem 0;
+}
+
+.thumbnail {
+    width: 100%;
+    filter: saturate(25%);
+}
+
+.thumbnail:hover {
+    filter: none;
+}
+
+.thumbnail:active {
+    position: fixed;
+    height: 50%;
+    object-fit: cover;
+    inset: 0;
+    margin: auto;
+    z-index: 9999;
 }
 
 .contact-form {
