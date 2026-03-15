@@ -498,8 +498,8 @@ button.fx:hover {
     box-shadow: 2px 2px 2px hsl(var(--DARK-HSL)/0.5);
 }
 
-.fx::before {
-    /* draw selected pointer decoration */
+/* .fx::before {
+    draw selected pointer decoration
     content: "";
     position: absolute;
     pointer-events: none;
@@ -511,7 +511,7 @@ button.fx:hover {
     left: -1.5rem;
 
     opacity: 0%;
-}
+} */
 
 .fx::after {
     /* draw selected line decoration */
