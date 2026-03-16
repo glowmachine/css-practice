@@ -619,7 +619,7 @@ h2.sub-hgroup {
 
 .thumbnail {
     width: 100%;
-    filter: saturate(25%);
+    filter: saturate(0%) sepia(25%);
 }
 
 .thumbnail:hover {
