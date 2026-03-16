@@ -36,7 +36,7 @@
         <div class="column-layout-one-two decorative-bar">
             <section class="column-left column-shadow content-frame">
                 <ul class="content-list">
-                    <!-- <li><a href="#2026-03-15" class="fx clickable"><i class="material-icons">search</i><time datetime="2026-03-15">March 15, 2026</time></a></li> -->
+                    <li><a href="#2026-03-16" class="fx clickable"><i class="material-icons">search</i><time datetime="2026-03-16">March 16, 2026</time></a></li>
                     <li><a href="#2026-03-06" class="fx clickable"><i class="material-icons">search</i><time datetime="2026-03-06">March 06, 2026</time></a></li>
                     <li><a href="#2026-02-28" class="fx clickable"><i class="material-icons">search</i><time datetime="2026-02-28">Feburary 28, 2026</time></a></li>
                     <li><a href="#2026-02-22" class="fx clickable"><i class="material-icons">search</i><time datetime="2026-02-22">Feburary 22, 2026</time></a></li>
@@ -49,10 +49,32 @@
                 </div>
                 <div class="content-frame">
                     <div class="content">
-                        <!-- <article>
-                            <h3 id="2026-03-15"><time datetime="2026-03-15">March 15, 2026</time></h3>
-                            <p>tba</p>
-                        </article> -->
+                        <article>
+                            <h3 id="2026-03-16"><time datetime="2026-03-16">March 16, 2026</time></h3>
+                            <p>I've been working on the demo site for the past two weeks now, and I'm unhappy that it's taken far longer than I expected. I'm learning a lot, there are just so many things that can conflict! For the most part, I've been sticking with relative units to accomodate responsive layouts later on, and the most difficult thing so far is dealing with width and height since they depend on their parents or containers, their display types, and property defaults. In no particular order, these are the things I've learned after overcoming some roadblock.</p>
+                            <ul>
+                                <li>to create a grid, Use two linear gradients to draw two lines of a small square and repeat it across the viewport</li>
+                                <li>to create a transparent grid, use a conical gradient that shades in 75% of a square and repeat it across the viewport, to avoid opacity stacking trying to achieve the same thing with linear gradients</li>
+                                <li>multiple backgrounds can be layered in the same ruleset of an element</li>
+                                <li><code>::before</code> and <code>::after</code> are useful for grouping decorative styles or parts of styles shared by an element, requires <code>content:""</code></li>
+                                <li>color values can be stored and then combined with an alpha value using a function</li>
+                                <li><code>position:relative</code> allows it to be transformed from its position in normal flow</li>
+                                <li><code>position:absolute</code> is relative to its nearest ancestor who isn't <code>position:static</code>, use top/right/bottom/left as offset to move itself visually away from default</li>
+                                <li>backwards direction of reasoning: require a parent to be display flex or grid because of what I want to do to an element, versus making a container display flex or grid because of how I plan to layout its elements (maybe do this sparingly, feels like a bandaid, plan it out first)</li>
+                                <li>wireframe a site first, otherwise designing from desktop-first approach could require a lot of overriding even when using relative units since it's hard to select the most sensible modular layout elements</li>
+                                <li>accommodating margins for decorations on an element should be built into the decoration's class ruleset</li>
+                                <li>use half-transparent background-colors or dashed borders to visualize area while arranging elements, consider outline instead of border for edge cases</li>
+                                <li>replaced elements (elements replaced with content like <code>img</code>, <code>input</code>, <code>button</code> etc.) can't have <code>::before</code> or <code>::after</code> pseudo elements</li>
+                                <li><code>flex-shrink:0</code> doesn't mean it can't shrink, it just won't shrink while distributing space relative to other sibling flex items, it'll still shrink if the container doesn't have enough size for the items</li>
+                                <li>for swipe animations, make the linear gradient 200% + 1% larger so that the edge pixel can't be visible even with pixel rounding</li>
+                                <li>% values are relative to the parent's parents and does not check higher ancenstors, <code>auto</code> is the default but commonly doesn't apply for height because of page stretching</li>
+                                <li>for overflowing sections, beware that <code>flex:1</code> + <code>min-height:auto</code> (default) will allow the height of a container to be defined by its content, whereas <code>flex:1</code> + <code>min-height:0</code> will make it so that it still grows to fill the remaining space but won't grow to fit its content if its content is larger than the remaining space</li>
+                                <li>for grids, <code>fr</code> are preferred to row height and column width percentages that rely on its containres width and height, and height is often undefined</li>
+                                <li>for flex items, <code>flex-basis</code> overwrites </code>height</code> (for column flow) and <code>width</code> (for row flow)</li>
+                                <li>flex and grid both have a <code>min-height</code> and <code>min-width</code> of <code>auto</code> by default, while block and inline are <code>0</code> by default and can shrink below content size</li>
+                            </ul>
+                            <p>I've also learned things like transitions, animations, pointer actions, clip paths, bezier curves, drawing geometric shapes, and many more, but nothing that was as interesting as the issues above. In hindsight, I wish I had known more about UI/UX design before getting in so deep. I'm excited to get started on learning javascript next.</p>
+                        </article>
                         <article>
                             <h3 id="2026-03-06"><time datetime="2026-03-06">March 06, 2026</time></h3>
                             <p>For the past week, I've been learning CSS from Dave Gray (again), and once again I thought he did an amazing job introducing things in a way that made me comfortable with approaching problems with different solutions. It was definitely more dense than the prior HTML lesson and found myself referencing documentation from mdn_ a lot more. The parts I thought were the most difficult were flex, grid, and animations, so those were what I decided to focus on for my first project.</p>
