@@ -293,6 +293,10 @@ main {
     flex-direction: column;
 }
 
+ul ul {
+    padding-left: 2rem;
+}
+
 .content-list {
     overflow-y: scroll;
     height: 100%;
