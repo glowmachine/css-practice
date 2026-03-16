@@ -612,6 +612,7 @@ h2.sub-hgroup {
     grid-template-columns: repeat(3, 1fr);
     gap: .5rem;
     margin: .5rem 0;
+    position: relative;
 }
 
 .thumbnail {
@@ -624,11 +625,9 @@ h2.sub-hgroup {
 }
 
 .thumbnail:active {
-    position: fixed;
-    height: 50%;
+    position: absolute;
+    width: 100%;
     object-fit: cover;
-    inset: 0;
-    margin: auto;
     z-index: 9999;
 }
 
